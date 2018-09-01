@@ -2,9 +2,15 @@ body {
     padding: 50px;
     font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
-
+nav {
+    text-transform: uppercase;
+    margin: 30px auto;
+    text-align: center;
+    width: 380px;
+}
 a {
-    color: #00b7ff;
+    color: #198cb9;
+    text-decoration: none;
 }
 #form-container {
     margin: 30px auto;
@@ -43,7 +49,7 @@ a {
     width: 100%;
 }
 
-#form-container input {
+#comedy {
     background: #43a3e6;
     border: 1px solid #43a3e6;
     border-radius: 4px;
