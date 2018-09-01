@@ -81,11 +81,17 @@ app.use('/', index);
 // route to login page
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
-// route to movie comedy page
-const movieComedy = require('./routes/movie-comedy');
-app.use('/', movieComedy);
 //route to user profile page
 const userProfile = require('./routes/user-profile');
 app.use('/', userProfile);
+// route to movie comedy page
+const movieComedy = require('./routes/movie-comedy');
+app.use('/', movieComedy);
+// route to movie drama page
+const movieDrama = require('./routes/movie-drama');
+app.use('/', movieDrama);
+// route to movie action page
+const movieAction = require('./routes/movie-action');
+app.use('/', movieAction);
 
 module.exports = app;
