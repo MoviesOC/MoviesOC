@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-// router.get('/movie-drama', (req, res, next) => {
-//     res.render('movie-drama');
-// });
+/*
+//for testing if route works:
+router.get('/movie-drama', (req, res, next) => {
+    res.render('movie-drama');
+});
+*/
 
 // Ensure only registered users have acces to movie-detail page:
 router.get('/movie-drama', ensureAuthenticated, (req, res) => {

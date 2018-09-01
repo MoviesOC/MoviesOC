@@ -84,6 +84,7 @@ app.use('/auth', authRoutes);
 //route to user profile page
 const userProfile = require('./routes/user-profile');
 app.use('/', userProfile);
+
 // route to movie comedy page
 const movieComedy = require('./routes/movie-comedy');
 app.use('/', movieComedy);
@@ -93,5 +94,11 @@ app.use('/', movieDrama);
 // route to movie action page
 const movieAction = require('./routes/movie-action');
 app.use('/', movieAction);
+// route to movie romcom page
+const movieRomcom = require('./routes/movie-romcom');
+app.use('/', movieRomcom);
+// route to movie random page
+const movieRandom = require('./routes/movie-random');
+app.use('/', movieRandom);
 
 module.exports = app;
