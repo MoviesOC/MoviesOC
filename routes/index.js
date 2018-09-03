@@ -83,9 +83,9 @@ router.get('/movie-suggestion', ensureAuthenticated, (req, res, next) => {
     axios
         .get(movieUrl)
         .then(response => {
-            console.log('\n\n\n');
-            console.log('-----------------------------------------');
-            console.log(response.data.results[0].title + response.data.results[0]);
+            // console.log('\n\n\n');
+            // console.log('-----------------------------------------');
+            // console.log(response.data.results[0].title + response.data.results[0]);
             res.render('movie-suggestion', {
                 user: req.user,
                 data: response.data,
@@ -101,7 +101,7 @@ router.get('/movie-suggestion', ensureAuthenticated, (req, res, next) => {
         });
 });
 
-// Ensure only registered users have acces to movie-detail page:
+// Ensure only registered users have acces to movie-detail& user profile page:
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
