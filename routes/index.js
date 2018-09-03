@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const router = express.Router();
 const Movie = require('../models/Movie');
@@ -73,7 +75,7 @@ router.get('/movie-suggestion', ensureAuthenticated, (req, res, next) => {
     // let movieGenreId = '&with_genres=35';
 
     let baseUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=';
-    const apiKey = 'dc08a5c8305a1ec46c91df025d899797';
+    const apiKey = process.env.MOVIEDB_API_KEY;
     let language = '&language=en-US';
     let noAdult = '&include_adult=false';
     let page = '&page=' + randomNum(1000);
