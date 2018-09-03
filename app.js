@@ -83,7 +83,7 @@ const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
 //route to user profile page
 const userProfile = require('./routes/user-profile');
-app.use('/', userProfile);
+app.use('/user-profile', userProfile);
 
 // route to movie comedy page
 const movieComedy = require('./routes/movie-comedy');

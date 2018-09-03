@@ -1,19 +1,39 @@
 <h1>Movie detail page / Comedy</h1>
 <h1>Our Movie Recommendation</h1>
 <div>
-  <img src="{{image}}">
+  <img src="{{image}}" id="picture">
   <h5>{{tagline}}</h5>
   {{!--
-  <h3>{{title}}</h3> --}}
+  <h3 id="title">{{title}}</h3> --}}
   <h4>{{vote_average}}</h4>
   <p>{{overview}}</p>
   {{#each movies}}
-  <p>{{genre.name}}</p>
-  {{/each}}
+  <p{{genre.name}}</p>
+    {{/each}}
 </div>
 <div>
-  <button type="submit" onclick="window.location='/movie-comedy'">Like it</button>
-  <button type="submit" onclick="window.location='/movie-comedy'">Hate it</button>
-  <button type="submit" onclick="window.location='/movie-comedy'">Been there done that</button>
-  <button type="submit" onclick="window.location='/movie-comedy'">Try again</button>
+  <form action="/movie-comedy/like" method="POST">
+    <input type="hidden" name="tmdbId" value="2222"> {{!-- TO MODIFY when we have the data --}}
+    <input type="hidden" name="title" value="Lock, Stock and Two Smoking Barrels">
+    <input type="hidden" name="picture" value="/qV7QaSf7f7yC2lc985zfyOJIAIN.jpg">
+    <input type="hidden" name="category" value="like">
+    <button>Like it</button>
+  </form>
+  <form action="/movie-comedy/hate" method="POST">
+    <input type="hidden" name="tmdbId" value="3333">
+    <input type="hidden" name="title" value="Star Wars">
+    <input type="hidden" name="picture" value="blabla">
+    <input type="hidden" name="category" value="hate">
+    <button>Hate it</button>
+  </form>
+  <form action="/movie-comedy/done" method="POST">
+    <input type="hidden" name="tmdbId" value="55555">
+    <input type="hidden" name="title" value="Indiana Jones">
+    <input type="hidden" name="picture" value="blabla">
+    <input type="hidden" name="category" value="done">
+    <button>Been there done that</button>
+  </form>
+  <form action="/movie-comedy" method="GET">
+    <button>Try again</button>
+  </form>
 </div>

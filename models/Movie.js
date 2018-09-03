@@ -4,14 +4,13 @@ const Schema = mongoose.Schema;
 const movieSchema = new Schema({
     title: String,
     picture: String, // poster_path
-    tagline: String,
-    releaseDate: String,
-    rating: Number, //vote_average
-    plot: String, //overview
-    genres: Array,
-    MovieId: Number,
-    votes: Number
+    tmdbId: String,
+    category: {
+        enum: ['like', 'hate', 'done'],
+        type: String
+    },
+    _owner: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
-const User = mongoose.model('User', userSchema);
-module.exports = User;
+const Movie = mongoose.model('Movie', movieSchema);
+module.exports = Movie;
