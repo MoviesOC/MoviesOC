@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const movieSchema = new Schema({
     title: String,
     picture: String, // poster_path
-    tmdbId: String,
+    tmdbId: Number,
     category: {
         enum: ['like', 'hate', 'done'],
         type: String

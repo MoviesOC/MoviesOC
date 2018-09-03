@@ -1,4 +1,5 @@
 require('dotenv').config();
+
 const express = require('express');
 const router = express.Router();
 const Movie = require('../models/Movie');
@@ -71,6 +72,7 @@ router.get('/user-profile', (req, res) => {
 router.get('/movie-suggestion', ensureAuthenticated, (req, res, next) => {
     let { genre } = req.query;
     let baseUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=';
+    let baseImgUrl = 'https://image.tmdb.org/t/p/w342/';
     const apiKey = process.env.MOVIEDB_API_KEY;
     let language = '&language=en-US';
     let noAdult = '&include_adult=false';
@@ -89,11 +91,12 @@ router.get('/movie-suggestion', ensureAuthenticated, (req, res, next) => {
             res.render('movie-suggestion', {
                 user: req.user,
                 data: response.data,
-                image: baseUrl + response.data.results[0].poster_path,
+                image: baseImgUrl + response.data.results[0].poster_path,
                 title: response.data.results[0].title,
                 releaseYear: response.data.results[0].release_date,
                 rating: response.data.results[0].vote_average,
-                plot: response.data.results[0].overview
+                plot: response.data.results[0].overview,
+                id: response.data.results[0].id
             });
         })
         .catch(err => {

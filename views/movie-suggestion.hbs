@@ -1,43 +1,34 @@
-<h1>Movie detail page</h1>
 <h1>Our Movie Recommendation</h1>
-
-
 <h2>{{title}}</h2>
-{{image}} <br> {{title}} <br>{{releaseYear}}<br> {{rating}} <br>{{plot}} <br>{{genres}}
-
 <div>
   <img src="{{image}}" id="picture">
-  <h5>{{tagline}}</h5>
-  {{!--
-  <h4>{{vote_average}}</h4> --}}
-  <p>{{overview}}</p>
-  {{#each movies}}
-  <p{{genre.name}}</p>
-    {{/each}}
+  <h5>{{releaseYear}}</h5>
+  <h5>{{rating}}</h5>
+  <p>{{plot}}</p>
 </div>
-<div>
-  <form action="/movie-suggestion/like" method="POST">
-    <input type="hidden" name="tmdbId" value="2222"> {{!-- TO MODIFY when we have the data --}}
-    <input type="hidden" name="title" value="Lock, Stock and Two Smoking Barrels">
-    <input type="hidden" name="picture" value="/qV7QaSf7f7yC2lc985zfyOJIAIN.jpg">
-    <input type="hidden" name="category" value="like">
-    <button>Like it</button>
-  </form>
-  <form action="/movie-suggestion/hate" method="POST">
-    <input type="hidden" name="tmdbId" value="3333">
-    <input type="hidden" name="title" value="Star Wars">
-    <input type="hidden" name="picture" value="blabla">
-    <input type="hidden" name="category" value="hate">
-    <button>Hate it</button>
-  </form>
-  <form action="/movie-suggestion/done" method="POST">
-    <input type="hidden" name="tmdbId" value="55555">
-    <input type="hidden" name="title" value="Indiana Jones">
-    <input type="hidden" name="picture" value="blabla">
-    <input type="hidden" name="category" value="done">
-    <button>Been there done that</button>
-  </form>
-  <form action="/movie-suggestion" method="GET">
-    <button>Try again</button>
-  </form>
+
+<form action="/movie-suggestion/like" method="POST">
+  <input type="hidden" name="tmdbId" value="{{id}}"> {{!-- TO MODIFY when we have the data --}}
+  <input type="hidden" name="title" value="{{title}}">
+  <input type="hidden" name="picture" value="{{image}}">
+  <input type="hidden" name="category" value="like">
+  <button>Like it</button>
+</form>
+<form action="/movie-suggestion/hate" method="POST">
+  <input type="hidden" name="tmdbId" value="{{id}}"> {{!-- TO MODIFY when we have the data --}}
+  <input type="hidden" name="title" value="{{title}}">
+  <input type="hidden" name="picture" value="{{poster_path}}">
+  <input type="hidden" name="category" value="hate">
+  <button>Hate it</button>
+</form>
+<form action="/movie-suggestion/done" method="POST">
+  <input type="hidden" name="tmdbId" value="{{id}}"> {{!-- TO MODIFY when we have the data --}}
+  <input type="hidden" name="title" value="{{title}}">
+  <input type="hidden" name="picture" value="{{poster_path}}">
+  <input type="hidden" name="category" value="done">
+  <button>Been there done that</button>
+</form>
+<form action="/movie-suggestion" method="GET">
+  <button>Try again</button>
+</form>
 </div>
