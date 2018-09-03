@@ -19,12 +19,12 @@ router.get('/movie-suggestion', ensureAuthenticated, (req, res, next) => {
     let baseUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=';
     const apiKey = 'dc08a5c8305a1ec46c91df025d899797';
     let language = '&language=en-US';
-    let noAdult = '&include_adult=false';
+    // let noAdult = '&include_adult=false';
     let page = '&page=' + randomNum(1000);
     let comedyGenreId = '';
     if (genre) comedyGenreId = '&with_genres=' + genre;
 
-    let movieUrl = ''.concat(baseUrl + apiKey + language + noAdult + page + comedyGenreId);
+    let movieUrl = ''.concat(baseUrl + apiKey + language + page + comedyGenreId);
 
     axios
         .get(movieUrl)
