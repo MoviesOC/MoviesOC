@@ -3,8 +3,14 @@ const Schema = mongoose.Schema;
 
 const movieSchema = new Schema({
     title: String,
-    picture: String, // find key
-    tagline: String
+    picture: String, // poster_path
+    tagline: String,
+    releaseDate: String,
+    rating: Number, //vote_average
+    plot: String, //overview
+    genres: Array,
+    MovieId: Number,
+    votes: Number
 });
 
 const User = mongoose.model('User', userSchema);
