@@ -1,0 +1,18 @@
+<h1>Movie detail page / Comedy</h1>
+<h2>{{title}}</h2>
+
+<div class="movie-container">
+  <img src="{{image}}">
+  <h5>{{tagline}}</h5>
+  <h4>{{vote_average}}</h4>
+  <p>{{overview}}</p>
+  {{#each movies}}
+  <p>{{genre.name}}</p>
+  {{/each}}
+</div>
+<div class="rate-btn-container">
+  <button type="submit" onclick="window.location='/movie-suggestion'">Like it</button>
+  <button type="submit" onclick="window.location='/movie-suggestion'">Hate it</button>
+  <button type="submit" onclick="window.location='/movie-suggestion'">Been there done that</button>
+  <button type="submit" onclick="window.location='/movie-suggestion'">Try again</button>
+</div>
