@@ -1,5 +1,5 @@
-
-<h2>Login</h2>
+<h2>
+  Login</h2>
 
 <form action="/auth/login" method="POST" id="form-container">
   <label for="username">Username</label>
@@ -9,9 +9,8 @@
 
   <label for="password">Password</label>
   <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
-  {{#if message }}
-    <div class="error-message">{{ message }}</div>
+  <br> {{#if message }}
+  <div class="error-message">{{ message }}</div>
   {{/if}}
 
   <br><br>

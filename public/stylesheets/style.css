@@ -18,6 +18,10 @@ a {
   color: #198cb9;
   text-decoration: none; }
 
+.form-container {
+  margin: 30px auto;
+  width: 380px; }
+
 #form-container {
   margin: 30px auto;
   width: 380px; }
@@ -77,5 +81,13 @@ a {
   margin: 20px auto;
   padding: 20px;
   width: 100%; }
+
+.movie-container {
+  display: flex;
+  justify-content: flex-start; }
+
+.rate-btn-container {
+  display: flex;
+  justify-content: flex-end; }
 
 /*# sourceMappingURL=style.css.map */

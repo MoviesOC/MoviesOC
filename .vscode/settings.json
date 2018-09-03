@@ -1,3 +1,25 @@
 {
-    "editor.tabSize": 4
+    //editor.tabsize 2 oder 4
+    "editor.tabSize": 4,
+    "files.autoSave": "onFocusChange",
+
+    //prettier eintellungen
+    "prettier.tabWidth": 4,
+    "prettier.semi": true,
+    "prettier.singleQuote": true,
+    "prettier.printWidth": 105,
+
+    //macht alles schöner bei cmd+s (save)
+    "editor.formatOnSave": true,
+
+    // öffnet Arbeitsbereiche in Tabs wie beim Mac mit true
+    "window.nativeTabs": true,
+
+    // drag and drop verhindern mit false
+    "editor.dragAndDrop": false,
+    "window.zoomLevel": 0,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "workbench.statusBar.visible": true,
+    "workbench.activityBar.visible": true,
+    "workbench.sideBar.location": "left"
 }

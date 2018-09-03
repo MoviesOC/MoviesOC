@@ -9,7 +9,7 @@ const movieSchema = new Schema({
     rating: Number, //vote_average
     plot: String, //overview
     genres: Array,
-    MovieId: Number,
+    tmdbId: Number,
     votes: Number
 });
 

@@ -1,6 +1,7 @@
 <h1>Movie detail page / Comedy</h1>
-<h1>Our Movie Recommendation</h1>
-<div>
+<h2>{{title}}</h2>
+
+<div class="movie-container">
   <img src="{{image}}">
   <h5>{{tagline}}</h5>
   {{!--
@@ -11,7 +12,7 @@
   <p>{{genre.name}}</p>
   {{/each}}
 </div>
-<div>
+<div class="rate-btn-container">
   <button type="submit" onclick="window.location='/movie-comedy'">Like it</button>
   <button type="submit" onclick="window.location='/movie-comedy'">Hate it</button>
   <button type="submit" onclick="window.location='/movie-comedy'">Been there done that</button>
