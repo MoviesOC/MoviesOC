@@ -11,7 +11,9 @@ router.get('/movie-comedy', (req, res, next) => {
 // Ensure only registered users have acces to movie-detail page:
 
 router.get('/movie-comedy', ensureAuthenticated, (req, res) => {
-    res.render('movie-comedy', { user: req.user });
+    axios.get('').then(response => {
+        res.render('movie-comedy', { user: req.user, data: response.data });
+    });
 });
 
 function ensureAuthenticated(req, res, next) {
