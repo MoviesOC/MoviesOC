@@ -1,10 +1,15 @@
 <h1>Movie detail page</h1>
 <h1>Our Movie Recommendation</h1>
+
+
 <h2>{{title}}</h2>
+{{image}} <br> {{title}} <br>{{releaseYear}}<br> {{rating}} <br>{{plot}} <br>{{genres}}
+
 <div>
   <img src="{{image}}" id="picture">
   <h5>{{tagline}}</h5>
-  <h4>{{vote_average}}</h4>
+  {{!--
+  <h4>{{vote_average}}</h4> --}}
   <p>{{overview}}</p>
   {{#each movies}}
   <p{{genre.name}}</p>
