@@ -78,27 +78,17 @@ require('./passport')(app);
 // route to homepage
 const index = require('./routes/index');
 app.use('/', index);
+
 // route to login page
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
+
 //route to user profile page
 const userProfile = require('./routes/user-profile');
 app.use('/user-profile', userProfile);
 
-// route to movie comedy page
-const movieComedy = require('./routes/movie-comedy');
+// route to movie suggestion page
+const movieComedy = require('./routes/index');
 app.use('/', movieComedy);
-// route to movie drama page
-const movieDrama = require('./routes/movie-drama');
-app.use('/', movieDrama);
-// route to movie action page
-const movieAction = require('./routes/movie-action');
-app.use('/', movieAction);
-// route to movie romcom page
-const movieRomcom = require('./routes/movie-romcom');
-app.use('/', movieRomcom);
-// route to movie random page
-const movieRandom = require('./routes/movie-random');
-app.use('/', movieRandom);
 
 module.exports = app;
