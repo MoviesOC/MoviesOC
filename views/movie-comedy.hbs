@@ -1,1 +1,18 @@
 <h1>Movie detail page / Comedy</h1>
+<h1>Our Movie Recommendation</h1>
+<div>
+  <img src="{{image}}">
+  <h5>{{tagline}}</h5>
+  <h3>{{title}}</h3>
+  <h4>{{vote_average}}</h4>
+  <p>{{overview}}</p>
+  {{#each movies}}
+  <p>{{genre.name}}</p>
+  {{/each}}
+</div>
+<div>
+  <button type="submit" onclick="window.location='/movie-comedy'">Like it</button>
+  <button type="submit" onclick="window.location='/movie-comedy'">Hate it</button>
+  <button type="submit" onclick="window.location='/movie-comedy'">Been there done that</button>
+  <button type="submit" onclick="window.location='/movie-comedy'">Try again</button>
+</div>
