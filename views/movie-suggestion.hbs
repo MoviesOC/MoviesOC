@@ -1,25 +1,16 @@
-<h1>Movie detail page</h1>
 <h1>Our Movie Recommendation</h1>
-
-
 <h2>{{title}}</h2>
-{{image}} <br> {{title}} <br>{{releaseYear}}<br> {{rating}} <br>{{plot}} <br>{{genres}}
-
 <div>
   <img src="{{image}}" id="picture">
-  <h5>{{tagline}}</h5>
-  {{!--
-  <h4>{{vote_average}}</h4> --}}
-  <p>{{overview}}</p>
-  {{#each movies}}
-  <p{{genre.name}}</p>
-    {{/each}}
+  <h5>{{releaseYear}}</h5>
+  <h5>{{rating}}</h5>
+  <p>{{plot}}</p>
 </div>
 
 <form action="/movie-suggestion/like" method="POST">
-  <input type="hidden" name="tmdbId" value={{ id }}> {{!-- TO MODIFY when we have the data --}}
+  <input type="hidden" name="tmdbId" value="{{id}}"> {{!-- TO MODIFY when we have the data --}}
   <input type="hidden" name="title" value="{{title}}">
-  <input type="hidden" name="picture" value="{{poster_path}}">
+  <input type="hidden" name="picture" value="{{image}}">
   <input type="hidden" name="category" value="like">
   <button>Like it</button>
 </form>
