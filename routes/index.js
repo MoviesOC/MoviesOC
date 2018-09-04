@@ -23,12 +23,9 @@ router.get('/user-profile', (req, res) => {
         movies.map(movie => {
             if (movie.category === 'like') {
                 liked.push(movie);
-                console.log('LIKED__________________', liked);
             } else if (movie.category === 'hate') {
                 hated.push(movie);
-                console.log('HATED IT SO MUCH HATED HATED', hated);
             } else if (movie.category === 'watched') {
-                console.log('BEEN THERE DONE THAT __________');
                 watched.push(movie);
             }
         });
@@ -169,4 +166,17 @@ router.get('/movies/:id/delete', (req, res, next) => {
             console.log(error);
         });
 });
+
+/*
+// --------> 7.) Change Category of movie
+*/
+
+router.get('/movies/:id/edit', (req, res, next) => {
+    Movie.findByIdAndUpdate(req.params.id, { category: req.query.category }, { new: true }).then(
+        updatedMovie => {
+            res.redirect('/user-profile');
+        }
+    );
+});
+
 module.exports = router;

@@ -1,21 +1,30 @@
 <h1>User profile page</h1>
-<div>
+<h3>Hello {{user.username}}</h3>
+<div class="list">
   <h3>Liked movies</h3>
   {{#each liked}}
   <p>{{this.title}}</p>
   <img src="{{this.picture}}" alt="{{this.title}} picture"><br>
   <a onclick="window.location='/movies/{{this.id}}'">Details</a>
-  {{!-- put in other list --}}
-  <a onclick="window.location='movies/{{this.id}}/delete'">Delete</a>{{/each}}
+  <a onclick="window.location='/movies/{{this.id}}/delete'">Delete</a>
+  <form action="/movies/{{this.id}}/edit" method="get">
+    <select name="category">
+      <option value="like">Like List</option>
+      <option value="hate">Hate List</option>
+      <option value="watched">Watched List</option>
+    </select>
+    <button type="">Change</button>
+  </form>
+  {{/each}}
 </div>
-<div>
+<div class="list">
   <h3>Hated movies</h3>
   {{#each hated}}
   <p>{{this.title}}</p>
   <img src="{{this.picture}}" alt="{{this.title}} picture">
   <a onclick="window.location='/movies/{{this.id}}'">Details</a> {{/each}}
 </div>
-<div>
+<div class="list">
   <h3>Been there done that</h3>
   {{#each watched}}
   <p>{{this.title}}</p>

@@ -93,4 +93,7 @@ a {
   display: flex;
   justify-content: flex-end; }
 
+.list img {
+  width: 80px; }
+
 /*# sourceMappingURL=style.css.map */
