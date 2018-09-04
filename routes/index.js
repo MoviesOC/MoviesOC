@@ -97,4 +97,28 @@ router.post('/movie-suggestion/:category', (req, res, next) => {
             console.log('ERROR', error);
         });
 });
+
+// GET to user profile page
+router.get('/user-profile', (req, res) => {
+    Movie.find({ _owner: req.user._id }).then(movies => {
+        let liked = [];
+        let hated = [];
+        let watched = [];
+        movies.map(movie => {
+            if (movie.category === 'like') {
+                liked.push(movie);
+                console.log('LIKED__________________', liked);
+            } else if (movie.category === 'hate') {
+                hated.push(movie);
+                console.log('HATED IT SO MUCH HATED HATED', hated);
+            } else if (movie.category === 'watched') {
+                console.log('BEEN THERE DONE THAT __________');
+                watched.push(movie);
+            }
+        });
+
+        res.render('user-profile', { liked, hated, watched });
+    });
+});
+
 module.exports = router;

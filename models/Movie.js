@@ -6,7 +6,7 @@ const movieSchema = new Schema({
     picture: String, // poster_path
     tmdbId: Number,
     category: {
-        enum: ['like', 'hate', 'done'],
+        enum: ['like', 'hate', 'watched'],
         type: String
     },
     _owner: { type: Schema.Types.ObjectId, ref: 'User' }
