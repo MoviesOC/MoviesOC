@@ -115,4 +115,56 @@ router.post('/movie-suggestion/:category', (req, res, next) => {
         });
 });
 
+/*
+// --------> 5.) Get Movie details
+*/
+
+router.get('/movies/:id', (req, res, next) => {
+    Movie.findById(req.params.id).then(movie => {
+        let tmdbid = movie.tmdbId;
+        let dbId = req.params.id;
+        console.log('____________________________________________________', dbId);
+        let baseUrl = 'https://api.themoviedb.org/3/movie/';
+        let baseImgUrl = 'https://image.tmdb.org/t/p/w342/';
+        const apiKey = process.env.MOVIEDB_API_KEY;
+        let language = '&language=en-US';
+        let movieUrl = ''.concat(baseUrl + tmdbid + '?api_key=' + apiKey + language);
+        axios
+            .get(movieUrl)
+            .then(response => {
+                // console.log('\n\n\n');
+                // console.log('-----------------------------------------');
+                // console.log(response.data.results);
+                res.render('details', {
+                    data: response.data,
+                    image: baseImgUrl + response.data.poster_path,
+                    title: response.data.title,
+                    releaseYear: response.data.release_date,
+                    rating: response.data.vote_average,
+                    plot: response.data.overview,
+                    id: response.data.id,
+                    dbId: dbId
+                });
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    });
+    // console.log('MOVIE__________________________________', movie);
+});
+
+/*
+// --------> 6.) Delete Movie from DB+list
+*/
+
+router.get('/movies/:id/delete', (req, res, next) => {
+    Movie.findByIdAndRemove(req.params.id)
+        .then(movie => {
+            console.log('The movie was deleted!!!:' + movie);
+            res.redirect('/user-profile');
+        })
+        .catch(error => {
+            console.log(error);
+        });
+});
 module.exports = router;
