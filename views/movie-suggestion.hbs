@@ -17,15 +17,15 @@
 <form action="/movie-suggestion/hate" method="POST">
   <input type="hidden" name="tmdbId" value="{{id}}"> {{!-- TO MODIFY when we have the data --}}
   <input type="hidden" name="title" value="{{title}}">
-  <input type="hidden" name="picture" value="{{poster_path}}">
+  <input type="hidden" name="picture" value="{{image}}">
   <input type="hidden" name="category" value="hate">
   <button>Hate it</button>
 </form>
 <form action="/movie-suggestion/done" method="POST">
   <input type="hidden" name="tmdbId" value="{{id}}"> {{!-- TO MODIFY when we have the data --}}
   <input type="hidden" name="title" value="{{title}}">
-  <input type="hidden" name="picture" value="{{poster_path}}">
-  <input type="hidden" name="category" value="done">
+  <input type="hidden" name="picture" value="{{image}}">
+  <input type="hidden" name="category" value="watched">
   <button>Been there done that</button>
 </form>
 <form action="/movie-suggestion" method="GET">

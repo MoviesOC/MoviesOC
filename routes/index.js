@@ -64,7 +64,24 @@ router.post('/movie-suggestion/done', (req, res, next) => {
 // GET to user profile page
 router.get('/user-profile', (req, res) => {
     Movie.find({ _owner: req.user._id }).then(movies => {
-        res.render('user-profile', { movies });
+        let baseImgUrl = 'https://image.tmdb.org/t/p/w342/';
+        let liked = [];
+        let hated = [];
+        let watched = [];
+        movies.map(movie => {
+            if (movie.category === 'like') {
+                liked.push(movie);
+                console.log('LIKED__________________', liked);
+            } else if (movie.category === 'hate') {
+                hated.push(movie);
+                console.log('HATED IT SO MUCH HATED HATED', hated);
+            } else if (movie.category === 'watched') {
+                console.log('BEEN THERE DONE THAT __________');
+                watched.push(movie);
+            }
+        });
+
+        res.render('user-profile', { liked, hated, watched });
     });
 });
 

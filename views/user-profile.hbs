@@ -1,23 +1,19 @@
 <h1>User profile page</h1>
-
 <div>
-  <table style="width:100%">
-    <thead>
-      <th>Like List</th>
-      <th>Hate List</th>
-      <th>Already watched</th>
-    </thead>
-    <tbody>
-      {{#each movies}}
-      <tr>
-        <td>{{this.title}}</td>
-        <td>Hate Movie</td>
-        <td>Already watched movie</td>
-        {{!--
-        <td>{{this.picture}}</td> --}} {{!--
-        <td><a href="/dictionary/{{this._id}}/delete">Delete</a></td> --}}
-      </tr>
-      {{/each}}
-    </tbody>
-  </table>
+  <h3>Liked movies</h3>
+  {{#each liked}}
+  <p>{{this.title}}</p>
+  <img src="{{this.picture}}" alt="{{this.title}} picture"> {{/each}}
+</div>
+<div>
+  <h3>Hated movies</h3>
+  {{#each hated}}
+  <p>{{this.title}}</p>
+  <img src="{{this.picture}}" alt="{{this.title}} picture"> {{/each}}
+</div>
+<div>
+  <h3>Been there done that</h3>
+  {{#each watched}}
+  <p>{{this.title}}</p>
+  <img src="{{this.picture}}" alt="{{this.title}} picture"> {{/each}}
 </div>
