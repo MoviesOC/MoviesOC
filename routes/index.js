@@ -5,63 +5,16 @@ const Movie = require('../models/Movie');
 const User = require('../models/User');
 const axios = require('axios');
 
-// get a random Number:
-function randomNum(num) {
-    return Math.ceil(Math.random() * num);
-}
-
-// 1.) GET home page
+/*
+// --------> 1.) GET / home page
+*/
 router.get('/', (req, res, next) => {
     res.render('index');
 });
 
-// 2.) Push to movie-like array
-router.post('/movie-suggestion/like', (req, res, next) => {
-    const { title, tmdbId, picture, category } = req.body;
-    const ownerId = req.user._id;
-    const newMovie = new Movie({ title, tmdbId, picture, category, _owner: ownerId });
-    newMovie
-        .save()
-        .then(movie => {
-            res.redirect('/movie-suggestion');
-        })
-        .catch(error => {
-            console.log('ERROR', error);
-        });
-});
-// 2.) Push to movie-hate array
-router.post('/movie-suggestion/hate', (req, res, next) => {
-    console.log('DEBUG req.body', req.body);
-    const { title, tmdbId, picture, category } = req.body;
-    const ownerId = req.user._id;
-    const newMovie = new Movie({ title, tmdbId, picture, category, _owner: ownerId });
-    console.log('POST', title, tmdbId, picture, category);
-    newMovie
-        .save()
-        .then(movie => {
-            res.redirect('/movie-suggestion');
-        })
-        .catch(error => {
-            console.log('ERROR', error);
-        });
-});
-// 2.) Push to movie-done array
-router.post('/movie-suggestion/done', (req, res, next) => {
-    console.log('DEBUG req.body', req.body);
-    const { title, tmdbId, picture, category } = req.body;
-    const ownerId = req.user._id;
-    const newMovie = new Movie({ title, tmdbId, picture, category, _owner: ownerId });
-    console.log('POST', title, tmdbId, picture, category);
-    newMovie
-        .save()
-        .then(movie => {
-            res.redirect('/movie-suggestion');
-        })
-        .catch(error => {
-            console.log('ERROR', error);
-        });
-});
-// GET to user profile page
+/*
+// --------> 2.) GET / to user profile page
+*/
 router.get('/user-profile', (req, res) => {
     Movie.find({ _owner: req.user._id }).then(movies => {
         let liked = [];
@@ -84,7 +37,10 @@ router.get('/user-profile', (req, res) => {
     });
 });
 
-// GET Movie-suggestion page
+/*
+// --------> 3.) GET / to movie-suggestion page
+*/
+
 router.get('/movie-suggestion', ensureAuthenticated, (req, res, next) => {
     let { genre } = req.query;
     let baseUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=';
@@ -97,13 +53,13 @@ router.get('/movie-suggestion', ensureAuthenticated, (req, res, next) => {
     if (genre) movieGenreId = '&with_genres=' + genre;
 
     let movieUrl = ''.concat(baseUrl + apiKey + language + page + movieGenreId);
-
+    // call API with axios:
     axios
         .get(movieUrl)
         .then(response => {
-            console.log('\n\n\n');
-            console.log('-----------------------------------------');
-            console.log(response.data.results[0].title + response.data.results[0]);
+            // console.log('\n\n\n');
+            // console.log('-----------------------------------------');
+            // console.log(response.data.results);
             res.render('movie-suggestion', {
                 user: req.user,
                 data: response.data,
@@ -112,7 +68,8 @@ router.get('/movie-suggestion', ensureAuthenticated, (req, res, next) => {
                 releaseYear: response.data.results[0].release_date,
                 rating: response.data.results[0].vote_average,
                 plot: response.data.results[0].overview,
-                id: response.data.results[0].id
+                id: response.data.results[0].id,
+                genre: req.query.genre
             });
         })
         .catch(err => {
@@ -120,7 +77,12 @@ router.get('/movie-suggestion', ensureAuthenticated, (req, res, next) => {
         });
 });
 
-// Ensure only registered users have acces to movie-detail page:
+// 3.1) Get a random Number:
+function randomNum(num) {
+    return Math.ceil(Math.random() * num);
+}
+
+// 3.2) Ensure only registered users have acces to movie-detail& user profile page:
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
@@ -128,4 +90,29 @@ function ensureAuthenticated(req, res, next) {
         res.redirect('/auth/login');
     }
 }
+
+/*
+// --------> 4.) Push like/hate/already seen movie to user profile page array
+*/
+
+router.post('/movie-suggestion/:category', (req, res, next) => {
+    const { title, tmdbId, picture } = req.body;
+    const ownerId = req.user._id;
+    const newMovie = new Movie({
+        title,
+        tmdbId,
+        picture,
+        category: req.params.category,
+        _owner: ownerId
+    });
+    newMovie
+        .save()
+        .then(movie => {
+            res.redirect('/movie-suggestion/?genre=' + req.body.genre);
+        })
+        .catch(error => {
+            console.log('ERROR', error);
+        });
+});
+
 module.exports = router;
