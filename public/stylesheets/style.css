@@ -157,6 +157,7 @@ a {
   display: flex;
   justify-content: flex-end; }
 
+<<<<<<< HEAD
 /*
 // 4.1) Movie Detail page
 */
@@ -201,5 +202,9 @@ a {
     color: white; }
   .btn-primary:active {
     background-color: #467370 !important; }
+=======
+.list img {
+  width: 80px; }
+>>>>>>> 7d215ea89a0956fad543af2afa43a26ea105103a
 
 /*# sourceMappingURL=style.css.map */
