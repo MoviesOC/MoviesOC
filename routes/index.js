@@ -42,17 +42,19 @@ router.get('/user-profile', (req, res) => {
 */
 
 router.get('/movie-suggestion', ensureAuthenticated, (req, res, next) => {
+    // let noAdult = '&include_adult=false';
     let { genre } = req.query;
     let baseUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=';
     let baseImgUrl = 'https://image.tmdb.org/t/p/w342/';
     const apiKey = process.env.MOVIEDB_API_KEY;
-    let language = '&language=en-US';
-    let noAdult = '&include_adult=false';
-    let page = '&page=' + randomNum(1000);
+    let language = '&language=en-US&with_original_language=en';
+    let voteAverage = '&vote_average.gte=6.5';
+    let page = '&page=' + randomNum(100);
+    let resultIndex = randomNum(20);
     let movieGenreId = '';
     if (genre) movieGenreId = '&with_genres=' + genre;
 
-    let movieUrl = ''.concat(baseUrl + apiKey + language + page + movieGenreId);
+    let movieUrl = ''.concat(baseUrl + apiKey + language + voteAverage + page + movieGenreId);
     // call API with axios:
     axios
         .get(movieUrl)
@@ -63,12 +65,12 @@ router.get('/movie-suggestion', ensureAuthenticated, (req, res, next) => {
             res.render('movie-suggestion', {
                 user: req.user,
                 data: response.data,
-                image: baseImgUrl + response.data.results[0].poster_path,
-                title: response.data.results[0].title,
-                releaseYear: response.data.results[0].release_date,
-                rating: response.data.results[0].vote_average,
-                plot: response.data.results[0].overview,
-                id: response.data.results[0].id,
+                image: baseImgUrl + response.data.results[resultIndex].poster_path,
+                title: response.data.results[resultIndex].title,
+                releaseYear: response.data.results[resultIndex].release_date,
+                rating: response.data.results[resultIndex].vote_average,
+                plot: response.data.results[resultIndex].overview,
+                id: response.data.results[resultIndex].id,
                 genre: req.query.genre
             });
         })
