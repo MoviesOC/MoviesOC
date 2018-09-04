@@ -15,10 +15,25 @@ router.get('/', (req, res, next) => {
 /*
 // --------> 2.) GET / to user profile page
 */
-
 router.get('/user-profile', (req, res) => {
     Movie.find({ _owner: req.user._id }).then(movies => {
-        res.render('user-profile', { movies });
+        let liked = [];
+        let hated = [];
+        let watched = [];
+        movies.map(movie => {
+            if (movie.category === 'like') {
+                liked.push(movie);
+                console.log('LIKED__________________', liked);
+            } else if (movie.category === 'hate') {
+                hated.push(movie);
+                console.log('HATED IT SO MUCH HATED HATED', hated);
+            } else if (movie.category === 'watched') {
+                console.log('BEEN THERE DONE THAT __________');
+                watched.push(movie);
+            }
+        });
+
+        res.render('user-profile', { liked, hated, watched });
     });
 });
 
@@ -66,6 +81,7 @@ router.get('/movie-suggestion', ensureAuthenticated, (req, res, next) => {
 function randomNum(num) {
     return Math.ceil(Math.random() * num);
 }
+
 // 3.2) Ensure only registered users have acces to movie-detail& user profile page:
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
@@ -74,6 +90,7 @@ function ensureAuthenticated(req, res, next) {
         res.redirect('/auth/login');
     }
 }
+
 /*
 // --------> 4.) Push like/hate/already seen movie to user profile page array
 */
@@ -96,29 +113,6 @@ router.post('/movie-suggestion/:category', (req, res, next) => {
         .catch(error => {
             console.log('ERROR', error);
         });
-});
-
-// GET to user profile page
-router.get('/user-profile', (req, res) => {
-    Movie.find({ _owner: req.user._id }).then(movies => {
-        let liked = [];
-        let hated = [];
-        let watched = [];
-        movies.map(movie => {
-            if (movie.category === 'like') {
-                liked.push(movie);
-                console.log('LIKED__________________', liked);
-            } else if (movie.category === 'hate') {
-                hated.push(movie);
-                console.log('HATED IT SO MUCH HATED HATED', hated);
-            } else if (movie.category === 'watched') {
-                console.log('BEEN THERE DONE THAT __________');
-                watched.push(movie);
-            }
-        });
-
-        res.render('user-profile', { liked, hated, watched });
-    });
 });
 
 module.exports = router;
