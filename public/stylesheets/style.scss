@@ -1,3 +1,17 @@
+$white: #fff !default;
+$grey-100: #f8f9fa !default;
+$grey-200: #e9ecef !default;
+$grey-300: #dee2e6 !default;
+$grey-400: #ced4da !default;
+$grey-500: #adb5bd !default;
+$grey-600: #868e96 !default;
+$grey-700: #51565a !default;
+$grey-800: #464a4e !default;
+$grey-900: #212529 !default;
+$black: #161616 !default;
+
+$primary: #64a19d !default;
+
 /*
 // 0.) GENERAL SETUP
 */
@@ -9,7 +23,7 @@
 body {
     font-family: 'Nunito';
     letter-spacing: 0.0625em;
-    background-color: #767b7e;
+    background-color: $grey-500;
     padding: 50px;
 }
 // headings
@@ -22,28 +36,30 @@ h3 {
 }
 // links
 a {
-    // color: #198cb9;
     text-decoration: none;
 }
 
 /* 
-// 1.) MAIN NAVBAR 
+// 1.) GLOBAL NAVBAR 
 */
 
 #mainNav {
+    position: fixed;
+    left: 0;
+    top: 0;
     min-height: 56px;
-    background-color: #fff;
+    background-color: $white;
     .navbar-toggler {
-        font-size: 80%;
+        font-size: 90%;
         padding: 0.75rem;
-        border: 1px solid #000;
+        border: 1px solid rgb(82, 82, 82);
         &:focus {
             outline: none;
         }
     }
     .navbar-brand {
-        color: #000;
-        font-weight: 700;
+        color: rgb(250, 248, 248);
+        font-weight: 800;
         padding: 0.9rem 0;
     }
     .navbar-nav {
@@ -60,46 +76,51 @@ a {
             }
         }
     }
+    #mainNav .navbar-nav .nav-item:active,
+    #mainNav .navbar-nav .nav-item:focus {
+        outline: none;
+        background-color: transparent;
+    }
     @media (min-width: 992px) {
         padding-top: 0;
         padding-bottom: 0;
         border-bottom: none;
-        background-color: transparent;
+        background-color: $grey-600;
         transition: background-color 0.3s ease-in-out;
         .navbar-brand {
             padding: 0.5rem 0;
-            color: fade-out(#fff, 0.5);
+            color: rgb(255, 255, 255);
         }
         .nav-link {
             transition: none;
             padding: 2rem 1.5rem;
-            color: fade-out(#fff, 0.5);
+            color: fade-out($white, 0.5);
             &:hover {
-                color: fade-out(#fff, 0.25);
+                color: fade-out($white, 0.25);
             }
             &:active {
                 color: white;
             }
         }
         &.navbar-shrink {
-            background-color: #fff;
+            // background-color: $white;
             .navbar-brand {
-                color: #000;
+                color: $black;
             }
             .nav-link {
-                color: #000;
+                color: rgb(255, 255, 255);
                 padding: 1.5rem 1.5rem 1.25rem;
-                border-bottom: 0.25rem solid transparent;
+                // border-bottom: 0.25rem solid transparent;
                 &:hover {
-                    color: #000;
+                    color: rgb(75, 75, 75);
                 }
                 &:active {
-                    color: darken(#000, 15%);
+                    color: darken(rgb(75, 75, 75), 15%);
                 }
                 &.active {
-                    color: #000;
+                    color: rgb(75, 75, 75);
                     outline: none;
-                    border-bottom: 0.25rem solid #000;
+                    border-bottom: 0.25rem solid rgb(75, 75, 75);
                 }
             }
         }
@@ -140,7 +161,7 @@ a {
     background: #43a3e6;
     border: 1px solid #43a3e6;
     border-radius: 4px;
-    color: #fff;
+    color: $white;
     cursor: pointer;
     display: inline-block;
     font-size: 14px;
@@ -152,10 +173,10 @@ a {
 }
 
 #category-btn {
-    background: #43a3e6;
-    border: 1px solid #43a3e6;
+    background: $grey-300;
+    border: 1px solid $grey-300;
     border-radius: 4px;
-    color: #fff;
+    color: $white;
     cursor: pointer;
     display: inline-block;
     font-size: 14px;
@@ -167,7 +188,7 @@ a {
 }
 
 #form-container button:hover {
-    background: #fff;
+    background: $white;
     color: #43a3e6;
     transition: 0.3s ease background;
 }
@@ -175,7 +196,7 @@ a {
 .error-message {
     background: #f02b63;
     box-sizing: border-box;
-    color: #fff;
+    color: $white;
     margin: 20px auto;
     padding: 20px;
     width: 100%;
@@ -187,4 +208,63 @@ a {
 .rate-btn-container {
     display: flex;
     justify-content: flex-end;
+}
+
+/*
+// 4.1) Movie Detail page
+*/
+#projects {
+    background-color: $grey-500;
+    padding: 10rem 0;
+    .featured-text {
+        padding: 2rem;
+        @media (min-width: 992px) {
+            background-color: $grey-700;
+            padding: 0 0 0 2rem;
+            border-left: 0.5rem solid $primary;
+        }
+    }
+    .project-text {
+        // padding: 3rem;
+        font-size: 90%;
+        @media (min-width: 992px) {
+            background-color: $grey-500;
+            // padding: 5rem;
+            hr {
+                border-color: $primary;
+                border-width: 0.25rem;
+                width: 30%;
+            }
+        }
+    }
+}
+
+/*
+// 4.2) Buttons
+*/
+// #rate-btn {
+//     display: flex;
+//     // justify-content: center;
+// }
+.btn {
+    box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
+    padding: 1.55rem 2.5rem;
+    font-family: 'Varela Round';
+    font-size: 80%;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    border: 0;
+}
+.btn-primary {
+    background-color: $primary;
+    &:hover {
+        background-color: darken($primary, 10%);
+    }
+    &:focus {
+        background-color: darken($primary, 10%);
+        color: white;
+    }
+    &:active {
+        background-color: darken($primary, 15%) !important;
+    }
 }
