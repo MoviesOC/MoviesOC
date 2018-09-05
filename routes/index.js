@@ -16,20 +16,53 @@ router.get('/', (req, res, next) => {
 // --------> 2.) GET / to user profile page
 */
 router.get('/user-profile', ensureAuthenticated, (req, res) => {
+    res.render('user-profile', { user: req.user });
+});
+
+// 2.1) GET / user movie ---> liked page
+
+router.get('/user-liked', (req, res, next) => {
     Movie.find({ _owner: req.user._id }).then(movies => {
         let liked = [];
-        let hated = [];
-        let watched = [];
         movies.map(movie => {
             if (movie.category === 'like') {
                 liked.push(movie);
-            } else if (movie.category === 'hate') {
-                hated.push(movie);
-            } else if (movie.category === 'watched') {
-                watched.push(movie);
+            } else {
+                console.log('error');
             }
         });
-        res.render('user-profile', { liked, hated, watched });
+        res.render('user-liked', { liked });
+    });
+});
+
+// 2.2) GET / user movie ---> hated page
+
+router.get('/user-hated', (req, res, next) => {
+    Movie.find({ _owner: req.user._id }).then(movies => {
+        let hated = [];
+        movies.map(movie => {
+            if (movie.category === 'hate') {
+                hated.push(movie);
+            } else {
+                console.log('error');
+            }
+        });
+        res.render('user-hated', { hated });
+    });
+});
+// 2.3) GET / user movie ---> watched page
+
+router.get('/user-watched', (req, res, next) => {
+    Movie.find({ _owner: req.user._id }).then(movies => {
+        let watched = [];
+        movies.map(movie => {
+            if (movie.category === 'watched') {
+                watched.push(movie);
+            } else {
+                console.log('error');
+            }
+        });
+        res.render('user-watched', { watched });
     });
 });
 
@@ -161,11 +194,12 @@ router.get('/movies/:id', (req, res, next) => {
 // --------> 6.) Delete Movie from DB+list
 */
 
-router.get('/movies/:id/delete', (req, res, next) => {
+router.get('/movie/:id/delete', (req, res, next) => {
+    console.log('going to delete');
     Movie.findByIdAndRemove(req.params.id)
         .then(movie => {
             console.log('The movie was deleted!!!:' + movie);
-            res.redirect('/user-profile');
+            res.redirect('/user-liked');
         })
         .catch(error => {
             console.log(error);
@@ -197,9 +231,7 @@ router.get('/find-movies', (req, res, next) => {
     let page = '&page=1';
     let searchUrl = ''.concat(baseUrl + 'api_key=' + apiKey + language + query + searchQuery + page);
     axios.get(searchUrl).then(result => {
-        console.log('================ INSIDE AXIOS ================');
-        console.log(result.data.results);
-        res.render('error', { result: result.data.results });
+        res.render('search-result', { result: result.data.results });
     });
 });
 module.exports = router;

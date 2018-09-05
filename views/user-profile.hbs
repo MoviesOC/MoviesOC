@@ -1,15 +1,17 @@
+<pre>
+
+
+
 <h1>User profile page</h1>
 <h3>Hello {{this.user.username}}</h3>
+</pre>
 
-<h3>Liked movies</h3>
-<div class="cards-container">
-  {{#each liked}} {{> movieCard}} {{/each}}
-</div>
-<h3>Hated movies</h3>
-<div class="cards-container">
-  {{#each hated}} {{> movieCard}} {{/each}}
-</div>
-<h3>Been there done that</h3>
-<div class="cards-container">
-  {{#each watched}} {{> movieCard}} {{/each}}
-</div>
+<form action="/user-liked/{{id}}" class="form-container" id="btn-comedy">
+  <a href="/user-liked" id="category-btn">Liked</a> <br>
+</form>
+<form action="/user-hated" class="form-container" id="btn-comedy">
+  <a href="/user-hated" id="category-btn">Hated</a> <br>
+</form>
+<form action="/user-watched" class="form-container" id="btn-comedy">
+  <a href="/user-watched" id="category-btn">Watched</a> <br>
+</form>

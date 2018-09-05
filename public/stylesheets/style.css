@@ -5,12 +5,12 @@
   position: fixed;
   left: 0;
   top: 0;
-  min-height: 56px;
+  height: 60px;
   background-color: #f8f9fa; }
   #mainNav .navbar-toggler {
     font-size: 90%;
     padding: 0.75rem;
-    border: 1px solid #868e96; }
+    border: 1px solid #e9ecef; }
     #mainNav .navbar-toggler:focus {
       outline: none; }
   #mainNav .navbar-brand {
@@ -86,6 +86,7 @@
 // Movie Detail page
 */
 #projects {
+  margin-top: 10%;
   background-color: #f8f9fa;
   padding: 10rem 0; }
   #projects .featured-text {
@@ -179,6 +180,9 @@
 .rate-btn-container {
   display: flex;
   justify-content: flex-end; }
+
+card-block {
+  padding: 1.5rem; }
 
 /*
 // 0.) GENERAL SETUP
