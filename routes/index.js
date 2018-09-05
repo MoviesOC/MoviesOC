@@ -128,7 +128,6 @@ router.get('/movies/:id', (req, res, next) => {
         let movieUrl = ''.concat(
             baseUrl + tmdbid + '?api_key=' + apiKey + language + '&append_to_response=videos'
         );
-        console.log('MOVIE URL =====================', movieUrl);
         axios
             .get(movieUrl)
             .then(response => {
@@ -185,37 +184,22 @@ router.get('/movies/:id/edit', (req, res, next) => {
     );
 });
 
-// router.get('/movies/:id', (req, res, next) => {
-//     Movie.findById(req.params.id).then(movie => {
-//         let tmdbid = movie.tmdbId;
-//         let dbId = req.params.id;
-//         console.log('____________________________________________________', dbId);
-//         let baseUrl = 'https://api.themoviedb.org/3/movie/';
-//         let baseImgUrl = 'https://image.tmdb.org/t/p/w342/';
-//         const apiKey = process.env.MOVIEDB_API_KEY;
-//         let language = '&language=en-US';
-//         let movieUrl = ''.concat(baseUrl + tmdbid + '?api_key=' + apiKey + language);
-//         axios
-//             .get(movieUrl)
-//             .then(response => {
-//                 // console.log('\n\n\n');
-//                 // console.log('-----------------------------------------');
-//                 // console.log(response.data.results);
-//                 res.render('details', {
-//                     data: response.data,
-//                     image: baseImgUrl + response.data.poster_path,
-//                     title: response.data.title,
-//                     releaseYear: response.data.release_date,
-//                     rating: response.data.vote_average,
-//                     plot: response.data.overview,
-//                     id: response.data.id,
-//                     dbId: dbId
-//                 });
-//             })
-//             .catch(err => {
-//                 console.error(err);
-//             });
-//     });
-//     // console.log('MOVIE__________________________________', movie);
-// });
+/*
+// --------> 8.) Search movies
+*/
+router.get('/find-movies', (req, res, next) => {
+    console.log(req.query.search);
+    let searchQuery = req.query.search;
+    let baseUrl = 'https://api.themoviedb.org/3/search/movie?';
+    let apiKey = process.env.MOVIEDB_API_KEY;
+    let language = '&language=en-US';
+    let query = '&query=';
+    let page = '&page=1';
+    let searchUrl = ''.concat(baseUrl + 'api_key=' + apiKey + language + query + searchQuery + page);
+    axios.get(searchUrl).then(result => {
+        console.log('================ INSIDE AXIOS ================');
+        console.log(result.data.results);
+        res.render('error', { result: result.data.results });
+    });
+});
 module.exports = router;
