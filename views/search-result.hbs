@@ -2,5 +2,15 @@ kdwhagj
 <h1>Your Search Result</h1>
 <div>
     {{#each result}}
-    <p>{{title}} -- {{release_date}}</p>{{/each}}
+    <img src="http://image.tmdb.org/t/p/w92/{{poster_path}}" alt="">
+    <p>{{title}} -- {{release_date}}</p>
+    <a onclick="window.location='/movies/{{id}}'">Details</a>
+    <form action="/movie-suggestion/:category" method="get">
+        <select name="category">
+            <option value="like">Like List</option>
+            <option value="hate">Hate List</option>
+            <option value="watched">Watched List</option>
+        </select>
+        <button type="submit">Add to list</button>
+    </form>{{/each}}
 </div>
