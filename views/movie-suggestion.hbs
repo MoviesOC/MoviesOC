@@ -8,7 +8,7 @@
         <img class="img-fluid" src="{{image}}" id="picture"> </div>
       <div class="col-md-5 mb-3 mb-md-0">
         <div class="bg-black text-center h-100 project">
-          <div class="d-flex h-100">
+          <div class="d-flex">
             <div class="project-text w-100 my-auto text-center text-lg-left">
               <h4 class="text-white">{{title}}</h4>
               <h5 class="text-white">{{releaseYear}}</h5>
@@ -18,7 +18,7 @@
 
               <div class="container">
                 <div class="row">
-                  <div class="col-4 justify-content-flex-end">
+                  <div class="col-4">
                     <form action="/movie-suggestion/like" method="POST">
                       <input type="hidden" name="tmdbId" value="{{id}}"> {{!-- TO MODIFY when we have the data --}}
                       <input type="hidden" name="title" value="{{title}}">
@@ -27,7 +27,7 @@
                       <button class="btn btn-primary mx-auto">Like it</button>
                     </form>
                   </div>
-                  <div class="col-4 justify-content-flex-end">
+                  <div class="col-4">
                     <form action="/movie-suggestion/hate" method="POST">
                       <input type="hidden" name="tmdbId" value="{{id}}"> {{!-- TO MODIFY when we have the data --}}
                       <input type="hidden" name="title" value="{{title}}">
@@ -37,7 +37,7 @@
                     </form>
                   </div>
                   <div class="w-100"></div>
-                  <div class="col-4  justify-content-center">
+                  <div class="col-4 ">
                     <form action="/movie-suggestion/watched" method="POST">
                       <input type="hidden" name="tmdbId" value="{{id}}"> {{!-- TO MODIFY when we have the data --}}
                       <input type="hidden" name="title" value="{{title}}">
@@ -46,7 +46,7 @@
                       <button class="btn btn-primary mx-auto">Already seen!</button>
                     </form>
                   </div>
-                  <div class="col-4 justify-content-center">
+                  <div class="col-4">
                     <form action="/movie-suggestion/" method="GET">
                       <input type="hidden" name="genre" value="{{genre}}">
                       <button class="btn btn-primary mx-auto">Try again</button>
