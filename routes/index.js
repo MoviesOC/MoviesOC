@@ -238,7 +238,6 @@ router.get('/movies/:id/edit', (req, res, next) => {
 // --------> 8.) Search movies
 */
 router.get('/find-movies', (req, res, next) => {
-    console.log(req.query.search);
     let searchQuery = req.query.search;
     let baseUrl = 'https://api.themoviedb.org/3/search/movie?';
     let apiKey = process.env.MOVIEDB_API_KEY;
@@ -247,6 +246,7 @@ router.get('/find-movies', (req, res, next) => {
     let page = '&page=1';
     let searchUrl = ''.concat(baseUrl + 'api_key=' + apiKey + language + query + searchQuery + page);
     axios.get(searchUrl).then(result => {
+        console.log(result.data.results[0]);
         res.render('search-result', { result: result.data.results });
     });
 });

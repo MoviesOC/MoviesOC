@@ -3,8 +3,9 @@
 <img src="{{image}}" alt="Picture here">
 <p>{{plot}}</p>
 <p>{{releaseYear}}</p>
-<p>{{genres.0.name}} {{genres.1.name}} {{genres.2.name}} {{genres.3.name}}</p>
-{{id}} {{!-- put in other list --}}
+{{#each genres}}
+<p>{{name}}</p>
+{{/each}} {{id}} {{!-- put in other list --}}
 <button onclick="window.location='/movies/{{dbId}}/delete'">Delete</button>
 <button onclick="window.open('https://www.themoviedb.org/movie/{{dbId}}' , '_blank')">Look for details on the website</button>
 {{#if youtubeLink}}
