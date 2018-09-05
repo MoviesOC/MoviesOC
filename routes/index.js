@@ -11,6 +11,12 @@ const axios = require('axios');
 router.get('/', (req, res, next) => {
     res.render('index');
 });
+/*
+// --------> 1.) GET / home page
+*/
+router.get('/user-movies', (req, res, next) => {
+    res.render('user-movies');
+});
 
 /*
 // --------> 2.) GET / to user profile page

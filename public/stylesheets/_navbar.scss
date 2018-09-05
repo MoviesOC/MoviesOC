@@ -6,12 +6,12 @@
     position: fixed;
     left: 0;
     top: 0;
-    min-height: 56px;
+    height: 60px;
     background-color: $grey-100;
     .navbar-toggler {
         font-size: 90%;
         padding: 0.75rem;
-        border: 1px solid $grey-600;
+        border: 1px solid $grey-200;
         &:focus {
             outline: none;
         }
