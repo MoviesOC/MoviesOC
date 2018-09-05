@@ -2,9 +2,6 @@
 // Navbar
 */
 #mainNav {
-  position: fixed;
-  left: 0;
-  top: 0;
   height: 60px;
   background-color: #f8f9fa; }
   #mainNav .navbar-toggler {
@@ -73,7 +70,8 @@
   border: 0; }
 
 .btn-primary {
-  background-color: #64a19d; }
+  background-color: #f8f9fa;
+  border: 1px solid #64a19d; }
   .btn-primary:hover {
     background-color: #4f837f; }
   .btn-primary:focus {

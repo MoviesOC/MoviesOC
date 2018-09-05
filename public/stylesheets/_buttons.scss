@@ -16,8 +16,10 @@
     letter-spacing: 0.15rem;
     border: 0;
 }
+
 .btn-primary {
-    background-color: $primary;
+    background-color: $grey-100;
+    border: 1px solid $primary;
     &:hover {
         background-color: darken($primary, 10%);
     }
