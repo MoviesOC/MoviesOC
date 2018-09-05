@@ -154,6 +154,10 @@ a {
   justify-content: flex-end; }
 
 .list img {
-  width: 80px; }
+  width: 80px;
+  cursor: pointer; }
+
+.list p {
+  cursor: pointer; }
 
 /*# sourceMappingURL=style.css.map */

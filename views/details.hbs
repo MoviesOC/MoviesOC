@@ -4,5 +4,24 @@
 <p>{{plot}}</p>
 <p>{{releaseYear}}</p>
 {{id}} {{!-- put in other list --}}
-<a onclick="window.location='/movies/{{dbId}}/delete'">Delete</a>
-<a href="https://www.themoviedb.org/movie/{{id}}">Look for details on the website</a>
+<button onclick="window.location='/movies/{{dbId}}/delete'">Delete</button>
+<button href="https://www.themoviedb.org/movie/{{id}}">Look for details on the website</button>
+<button type="button" data-toggle="modal" data-target="#myModal">Watch Trailer</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <iframe width='470' height='315' src='{{youtubeLink}}'>
+                </iframe>
+            </div>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+
+    </div>
+</div>
+
+</div>

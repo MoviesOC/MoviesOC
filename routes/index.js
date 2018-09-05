@@ -122,27 +122,33 @@ router.get('/movies/:id', (req, res, next) => {
     Movie.findById(req.params.id).then(movie => {
         let tmdbid = movie.tmdbId;
         let dbId = req.params.id;
-        console.log('____________________________________________________', dbId);
         let baseUrl = 'https://api.themoviedb.org/3/movie/';
         let baseImgUrl = 'https://image.tmdb.org/t/p/w342/';
         const apiKey = process.env.MOVIEDB_API_KEY;
         let language = '&language=en-US';
         let movieUrl = ''.concat(baseUrl + tmdbid + '?api_key=' + apiKey + language);
-        axios
-            .get(movieUrl)
-            .then(response => {
+
+        Promise.all([
+            axios.get(movieUrl),
+            axios.get(baseUrl + tmdbid + '/videos?api_key=' + apiKey + language)
+        ])
+            .then(responses => {
                 // console.log('\n\n\n');
                 // console.log('-----------------------------------------');
                 // console.log(response.data.results);
+                let youtubeKey = responses[1].data.results[0].key;
+                let youtubeLink = 'https://www.youtube.com/embed/' + youtubeKey + '?autoplay=0';
+
                 res.render('details', {
-                    data: response.data,
-                    image: baseImgUrl + response.data.poster_path,
-                    title: response.data.title,
-                    releaseYear: response.data.release_date,
-                    rating: response.data.vote_average,
-                    plot: response.data.overview,
-                    id: response.data.id,
-                    dbId: dbId
+                    data: responses[0].data,
+                    image: baseImgUrl + responses[0].data.poster_path,
+                    title: responses[0].data.title,
+                    releaseYear: responses[0].data.release_date,
+                    rating: responses[0].data.vote_average,
+                    plot: responses[0].data.overview,
+                    id: responses[0].data.id,
+                    dbId: dbId,
+                    youtubeLink: youtubeLink
                 });
             })
             .catch(err => {
@@ -179,4 +185,37 @@ router.get('/movies/:id/edit', (req, res, next) => {
     );
 });
 
+// router.get('/movies/:id', (req, res, next) => {
+//     Movie.findById(req.params.id).then(movie => {
+//         let tmdbid = movie.tmdbId;
+//         let dbId = req.params.id;
+//         console.log('____________________________________________________', dbId);
+//         let baseUrl = 'https://api.themoviedb.org/3/movie/';
+//         let baseImgUrl = 'https://image.tmdb.org/t/p/w342/';
+//         const apiKey = process.env.MOVIEDB_API_KEY;
+//         let language = '&language=en-US';
+//         let movieUrl = ''.concat(baseUrl + tmdbid + '?api_key=' + apiKey + language);
+//         axios
+//             .get(movieUrl)
+//             .then(response => {
+//                 // console.log('\n\n\n');
+//                 // console.log('-----------------------------------------');
+//                 // console.log(response.data.results);
+//                 res.render('details', {
+//                     data: response.data,
+//                     image: baseImgUrl + response.data.poster_path,
+//                     title: response.data.title,
+//                     releaseYear: response.data.release_date,
+//                     rating: response.data.vote_average,
+//                     plot: response.data.overview,
+//                     id: response.data.id,
+//                     dbId: dbId
+//                 });
+//             })
+//             .catch(err => {
+//                 console.error(err);
+//             });
+//     });
+//     // console.log('MOVIE__________________________________', movie);
+// });
 module.exports = router;
