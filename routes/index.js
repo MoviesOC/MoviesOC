@@ -21,50 +21,63 @@ router.get('/user-profile', ensureAuthenticated, (req, res) => {
 
 // 2.1) GET / user movie ---> liked page
 
-router.get('/user-liked', (req, res, next) => {
+router.get('/user-movies/:category', (req, res, next) => {
+    let movieCategory = req.params.category;
     Movie.find({ _owner: req.user._id }).then(movies => {
-        let liked = [];
+        let moviesArray = [];
         movies.map(movie => {
-            if (movie.category === 'like') {
-                liked.push(movie);
+            if (movie.category === movieCategory) {
+                moviesArray.push(movie);
             } else {
                 console.log('error');
             }
         });
-        res.render('user-liked', { liked });
+        let word = '';
+        switch (movieCategory) {
+            case 'like':
+                word = 'liked';
+                break;
+            case 'hate':
+                word = 'hated';
+                break;
+            case 'watched':
+                word = 'have already seen';
+                break;
+        }
+        res.render('user-movies', { movies: moviesArray, word });
     });
 });
 
-// 2.2) GET / user movie ---> hated page
+// // 2.2) GET / user movie ---> hated page
 
-router.get('/user-hated', (req, res, next) => {
-    Movie.find({ _owner: req.user._id }).then(movies => {
-        let hated = [];
-        movies.map(movie => {
-            if (movie.category === 'hate') {
-                hated.push(movie);
-            } else {
-                console.log('error');
-            }
-        });
-        res.render('user-hated', { hated });
-    });
-});
-// 2.3) GET / user movie ---> watched page
+// router.get('/user-hated', (req, res, next) => {
+//     Movie.find({ _owner: req.user._id }).then(movies => {
+//         let hated = [];
+//         movies.map(movie => {
+//             if (movie.category === 'hate') {
+//                 hated.push(movie);
+//             } else {
+//                 console.log('error');
+//             }
+//         });
+//         res.render('user-hated', { hated });
+//     });
+// });
+// // 2.3) GET / user movie ---> watched page
 
-router.get('/user-watched', (req, res, next) => {
-    Movie.find({ _owner: req.user._id }).then(movies => {
-        let watched = [];
-        movies.map(movie => {
-            if (movie.category === 'watched') {
-                watched.push(movie);
-            } else {
-                console.log('error');
-            }
-        });
-        res.render('user-watched', { watched });
-    });
-});
+// router.get('/user-watched', (req, res, next) => {
+//     Movie.find({ _owner: req.user._id }).then(movies => {
+//         let watched = [];
+//         movies.map(movie => {
+//             if (movie.category === 'watched') {
+//                 watched.push(movie);
+//             } else {
+//                 console.log('error');
+//             }
+//         });
+//         res.render('user-watched', { watched });
+//     });
+// });
 
 /*
 // --------> 3.) GET / to movie-suggestion page
@@ -199,7 +212,7 @@ router.get('/movie/:id/delete', (req, res, next) => {
     Movie.findByIdAndRemove(req.params.id)
         .then(movie => {
             console.log('The movie was deleted!!!:' + movie);
-            res.redirect('/user-liked');
+            res.redirect('/user-movies/' + movie.category);
         })
         .catch(error => {
             console.log(error);
@@ -211,11 +224,14 @@ router.get('/movie/:id/delete', (req, res, next) => {
 */
 
 router.get('/movies/:id/edit', (req, res, next) => {
-    Movie.findByIdAndUpdate(req.params.id, { category: req.query.category }, { new: true }).then(
-        updatedMovie => {
-            res.redirect('/user-profile');
-        }
-    );
+    let newCategory = req.query.category;
+    Movie.findById(req.params.id).then(movie => {
+        let oldCategory = movie.category;
+        movie.category = newCategory;
+        movie.save().then(updatedMovie => {
+            res.redirect('/user-movies/' + oldCategory);
+        });
+    });
 });
 
 /*
