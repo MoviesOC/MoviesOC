@@ -21,7 +21,7 @@ router.get('/user-movies', (req, res, next) => {
 /*
 // --------> 2.) GET / to user profile page
 */
-router.get('/user-profile', (req, res) => {
+router.get('/user-profile', ensureAuthenticated, (req, res) => {
     Movie.find({ _owner: req.user._id }).then(movies => {
         let liked = [];
         let hated = [];
@@ -35,7 +35,6 @@ router.get('/user-profile', (req, res) => {
                 watched.push(movie);
             }
         });
-
         res.render('user-profile', { liked, hated, watched });
     });
 });
@@ -132,29 +131,31 @@ router.get('/movies/:id', (req, res, next) => {
         let baseImgUrl = 'https://image.tmdb.org/t/p/w342/';
         const apiKey = process.env.MOVIEDB_API_KEY;
         let language = '&language=en-US';
-        let movieUrl = ''.concat(baseUrl + tmdbid + '?api_key=' + apiKey + language);
-
-        Promise.all([
-            axios.get(movieUrl),
-            axios.get(baseUrl + tmdbid + '/videos?api_key=' + apiKey + language)
-        ])
-            .then(responses => {
-                // console.log('\n\n\n');
-                // console.log('-----------------------------------------');
-                // console.log(response.data.results);
-                let youtubeKey = responses[1].data.results[0].key;
-                let youtubeLink = 'https://www.youtube.com/embed/' + youtubeKey + '?autoplay=0';
-
+        let movieUrl = ''.concat(
+            baseUrl + tmdbid + '?api_key=' + apiKey + language + '&append_to_response=videos'
+        );
+        console.log('MOVIE URL =====================', movieUrl);
+        axios
+            .get(movieUrl)
+            .then(response => {
+                let youtubeKey =
+                    response.data.videos.results.length !== 0
+                        ? response.data.videos.results[0].key
+                        : null;
+                if (youtubeKey) {
+                    var youtubeLink = 'https://www.youtube.com/embed/' + youtubeKey + '?autoplay=0';
+                }
                 res.render('details', {
-                    data: responses[0].data,
-                    image: baseImgUrl + responses[0].data.poster_path,
-                    title: responses[0].data.title,
-                    releaseYear: responses[0].data.release_date,
-                    rating: responses[0].data.vote_average,
-                    plot: responses[0].data.overview,
-                    id: responses[0].data.id,
+                    data: response.data,
+                    image: baseImgUrl + response.data.poster_path,
+                    title: response.data.title,
+                    releaseYear: response.data.release_date,
+                    rating: response.data.vote_average,
+                    plot: response.data.overview,
+                    id: response.data.id,
                     dbId: dbId,
-                    youtubeLink: youtubeLink
+                    youtubeLink: youtubeLink,
+                    genres: response.data.genres
                 });
             })
             .catch(err => {
@@ -163,7 +164,6 @@ router.get('/movies/:id', (req, res, next) => {
     });
     // console.log('MOVIE__________________________________', movie);
 });
-
 /*
 // --------> 6.) Delete Movie from DB+list
 */

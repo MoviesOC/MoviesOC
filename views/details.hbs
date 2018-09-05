@@ -3,10 +3,14 @@
 <img src="{{image}}" alt="Picture here">
 <p>{{plot}}</p>
 <p>{{releaseYear}}</p>
+<p>{{genres.0.name}} {{genres.1.name}} {{genres.2.name}} {{genres.3.name}}</p>
 {{id}} {{!-- put in other list --}}
 <button onclick="window.location='/movies/{{dbId}}/delete'">Delete</button>
-<button href="https://www.themoviedb.org/movie/{{id}}">Look for details on the website</button>
+<button onclick="window.open('https://www.themoviedb.org/movie/{{dbId}}' , '_blank')">Look for details on the website</button>
+{{#if youtubeLink}}
 <button type="button" data-toggle="modal" data-target="#myModal">Watch Trailer</button>
+{{/if}}
+
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">

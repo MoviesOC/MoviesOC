@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 mongoose
     .connect(
-        'mongodb://localhost/movies',
+        process.env.MONGODB_URI,
         { useNewUrlParser: true }
     )
     .then(x => {
