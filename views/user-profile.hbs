@@ -1,48 +1,15 @@
 <h1>User profile page</h1>
-<h3>Hello {{username}}</h3>
-<div class="list">
-  <h3>Liked movies</h3>
-  {{#each liked}}
-  <p onclick="window.location='/movies/{{this.id}}'">{{this.title}}</p>
-  <img src="{{this.picture}}" alt="{{this.title}} picture" onclick="window.location='/movies/{{this.id}}'"><br>
-  <button onclick="window.location='/movies/{{this.id}}'">Details</button>
-  <button onclick="window.location='/movies/{{this.id}}/delete'">Delete</button>
-  <form action="/movies/{{this.id}}/edit" method="get">
-    <select name="category">
-      <option value="hate">Hate List</option>
-      <option value="watched">Watched List</option>
-    </select>
-    <button type="">Change</button>
-  </form>
-  {{/each}}
+<h3>Hello {{this.user.username}}</h3>
+
+<h3>Liked movies</h3>
+<div class="cards-container">
+  {{#each liked}} {{> movieCard}} {{/each}}
 </div>
-<div class="list">
-  <h3>Hated movies</h3>
-  {{#each hated}}
-  <p onclick="window.location='/movies/{{this.id}}'">{{this.title}}</p>
-  <img src="{{this.picture}}" alt="{{this.title}} picture" onclick="window.location='/movies/{{this.id}}'"><br>
-  <button onclick="window.location='/movies/{{this.id}}'">Details</button>
-  <button onclick="window.location='/movies/{{this.id}}/delete'">Delete</button>
-  <form action="/movies/{{this.id}}/edit" method="get">
-    <select name="category">
-      <option value="like">Like List</option>
-      <option value="watched">Watched List</option>
-    </select>
-    <button type="">Change</button>
-  </form>{{/each}}
+<h3>Hated movies</h3>
+<div class="cards-container">
+  {{#each hated}} {{> movieCard}} {{/each}}
 </div>
-<div class="list">
-  <h3>Been there done that</h3>
-  {{#each watched}}
-  <p onclick="window.location='/movies/{{this.id}}'">{{this.title}}</p>
-  <img src="{{this.picture}}" alt="{{this.title}} picture" onclick="window.location='/movies/{{this.id}}'"><br>
-  <button onclick="window.location='/movies/{{this.id}}'">Details</button>
-  <button onclick="window.location='/movies/{{this.id}}/delete'">Delete</button>
-  <form action="/movies/{{this.id}}/edit" method="get">
-    <select name="category">
-      <option value="like">Like List</option>
-      <option value="hate">Hate List</option>
-    </select>
-    <button type="">Change</button>
-  </form> {{/each}}
+<h3>Been there done that</h3>
+<div class="cards-container">
+  {{#each watched}} {{> movieCard}} {{/each}}
 </div>

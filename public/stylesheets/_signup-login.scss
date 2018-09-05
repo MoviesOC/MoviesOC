@@ -1,0 +1,82 @@
+/*
+// 2.2) Login and Signup style
+*/
+
+.form-container {
+    margin: 30px auto;
+    width: 380px;
+}
+#form-container {
+    margin: 30px auto;
+    width: 380px;
+}
+
+#form-container label {
+    color: #666;
+    display: inline-block;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+#form-container input,
+#form-container button {
+    box-sizing: border-box;
+    font-size: 14px;
+    outline: 0;
+    padding: 4px;
+    width: 100%;
+}
+
+#form-container button {
+    background: #43a3e6;
+    border: 1px solid #43a3e6;
+    border-radius: 4px;
+    color: $white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    padding: 8px 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.3s ease background;
+    width: 100%;
+}
+
+#category-btn {
+    background: $grey-300;
+    border: 1px solid $grey-300;
+    border-radius: 4px;
+    color: $white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    padding: 8px 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.3s ease background;
+    width: 100%;
+}
+
+#form-container button:hover {
+    background: $white;
+    color: #43a3e6;
+    transition: 0.3s ease background;
+}
+
+.error-message {
+    background: #f02b63;
+    box-sizing: border-box;
+    color: $white;
+    margin: 20px auto;
+    padding: 20px;
+    width: 100%;
+}
+.movie-container {
+    display: flex;
+    justify-content: flex-start;
+}
+.rate-btn-container {
+    display: flex;
+    justify-content: flex-end;
+}

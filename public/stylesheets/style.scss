@@ -1,7 +1,12 @@
+@import 'variables.scss';
+@import 'navbar.scss';
+@import 'buttons.scss';
+@import 'movie-detail.scss';
+@import 'signup-login.scss';
+
 /*
 // 0.) GENERAL SETUP
 */
-
 * {
     margin: 0;
 }
@@ -9,9 +14,35 @@
 body {
     font-family: 'Nunito';
     letter-spacing: 0.0625em;
-    background-color: #767b7e;
-    padding: 50px;
+    background-color: $grey-100;
 }
+
+a {
+    color: $primary;
+    text-decoration: none;
+    &:focus,
+    &:hover {
+        text-decoration: none;
+        color: darken($primary, 20%);
+    }
+}
+
+// .bg-black {
+//     background-color: $black !important;
+// }
+
+// .bg-primary {
+//     background-color: $primary !important;
+// }
+
+// .text-primary {
+//     color: $primary !important;
+// }
+
+// footer {
+//     padding: 5rem 0;
+// }
+
 // headings
 h1,
 h2,
@@ -19,181 +50,4 @@ h3 {
     margin: 30px auto;
     text-align: center;
     width: 380px;
-}
-// links
-a {
-    // color: #198cb9;
-    text-decoration: none;
-}
-
-/* 
-// 1.) MAIN NAVBAR 
-*/
-
-#mainNav {
-    min-height: 56px;
-    background-color: #fff;
-    .navbar-toggler {
-        font-size: 80%;
-        padding: 0.75rem;
-        border: 1px solid #000;
-        &:focus {
-            outline: none;
-        }
-    }
-    .navbar-brand {
-        color: #000;
-        font-weight: 700;
-        padding: 0.9rem 0;
-    }
-    .navbar-nav {
-        .nav-item {
-            &:hover {
-                color: fade(white, 80%);
-                outline: none;
-                background-color: transparent;
-            }
-            &:active,
-            &:focus {
-                outline: none;
-                background-color: transparent;
-            }
-        }
-    }
-    @media (min-width: 992px) {
-        padding-top: 0;
-        padding-bottom: 0;
-        border-bottom: none;
-        background-color: transparent;
-        transition: background-color 0.3s ease-in-out;
-        .navbar-brand {
-            padding: 0.5rem 0;
-            color: fade-out(#fff, 0.5);
-        }
-        .nav-link {
-            transition: none;
-            padding: 2rem 1.5rem;
-            color: fade-out(#fff, 0.5);
-            &:hover {
-                color: fade-out(#fff, 0.25);
-            }
-            &:active {
-                color: white;
-            }
-        }
-        &.navbar-shrink {
-            background-color: #fff;
-            .navbar-brand {
-                color: #000;
-            }
-            .nav-link {
-                color: #000;
-                padding: 1.5rem 1.5rem 1.25rem;
-                border-bottom: 0.25rem solid transparent;
-                &:hover {
-                    color: #000;
-                }
-                &:active {
-                    color: darken(#000, 15%);
-                }
-                &.active {
-                    color: #000;
-                    outline: none;
-                    border-bottom: 0.25rem solid #000;
-                }
-            }
-        }
-    }
-}
-
-/*
-// 2.2) Login and Signup style
-*/
-
-.form-container {
-    margin: 30px auto;
-    width: 380px;
-}
-#form-container {
-    margin: 30px auto;
-    width: 380px;
-}
-
-#form-container label {
-    color: #666;
-    display: inline-block;
-    margin-bottom: 10px;
-    text-align: center;
-    width: 100%;
-}
-
-#form-container input,
-#form-container button {
-    box-sizing: border-box;
-    font-size: 14px;
-    outline: 0;
-    padding: 4px;
-    width: 100%;
-}
-
-#form-container button {
-    background: #43a3e6;
-    border: 1px solid #43a3e6;
-    border-radius: 4px;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 14px;
-    padding: 8px 16px;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: 0.3s ease background;
-    width: 100%;
-}
-
-#category-btn {
-    background: #43a3e6;
-    border: 1px solid #43a3e6;
-    border-radius: 4px;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 14px;
-    padding: 8px 16px;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: 0.3s ease background;
-    width: 100%;
-}
-
-#form-container button:hover {
-    background: #fff;
-    color: #43a3e6;
-    transition: 0.3s ease background;
-}
-
-.error-message {
-    background: #f02b63;
-    box-sizing: border-box;
-    color: #fff;
-    margin: 20px auto;
-    padding: 20px;
-    width: 100%;
-}
-.movie-container {
-    display: flex;
-    justify-content: flex-start;
-}
-.rate-btn-container {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.list img {
-    width: 80px;
-    cursor: pointer;
-}
-
-.list p {
-    cursor: pointer;
 }

@@ -60,6 +60,9 @@ hbs.registerHelper('ifUndefined', (value, options) => {
     }
 });
 
+hbs.registerPartials(__dirname + '/views/partials');
+// hbs.registerPartials(path.join(__dirname, '/views/partials'));
+
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
 

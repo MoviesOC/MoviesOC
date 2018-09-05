@@ -1,0 +1,29 @@
+/*
+// Movie Detail page
+*/
+#projects {
+    background-color: $grey-100;
+    padding: 10rem 0;
+    .featured-text {
+        padding: 2rem;
+        @media (min-width: 992px) {
+            // background-color: $grey-700;
+            background-color: $white;
+            padding: 0 0 0 2rem;
+            border-left: 0.5rem solid $primary;
+        }
+    }
+    .project-text {
+        // padding: 3rem;
+        font-size: 90%;
+        @media (min-width: 992px) {
+            background-color: $grey-500;
+            // padding: 5rem;
+            hr {
+                border-color: $primary;
+                border-width: 0.25rem;
+                width: 30%;
+            }
+        }
+    }
+}

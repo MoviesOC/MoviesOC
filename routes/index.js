@@ -39,7 +39,6 @@ router.get('/user-profile', (req, res) => {
 */
 
 router.get('/movie-suggestion', ensureAuthenticated, (req, res, next) => {
-    // let noAdult = '&include_adult=false';
     let { genre } = req.query;
     let baseUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=';
     let baseImgUrl = 'https://image.tmdb.org/t/p/w342/';
@@ -52,6 +51,7 @@ router.get('/movie-suggestion', ensureAuthenticated, (req, res, next) => {
     if (genre) movieGenreId = '&with_genres=' + genre;
 
     let movieUrl = ''.concat(baseUrl + apiKey + language + voteAverage + page + movieGenreId);
+    // let noAdult = '&include_adult=false';
     // call API with axios:
     axios
         .get(movieUrl)
