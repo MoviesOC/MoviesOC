@@ -86,10 +86,6 @@ app.use('/', index);
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
 
-//route to user profile page
-const userProfile = require('./routes/user-profile');
-app.use('/user-profile', userProfile);
-
 // route to movie suggestion page
 const movieComedy = require('./routes/index');
 app.use('/', movieComedy);

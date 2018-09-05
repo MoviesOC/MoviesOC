@@ -1,7 +1,7 @@
 <div class="card-body" id="liked-movies">
     <div class="card-block col 4" style="width: 33.333%;">
         <div class="list">
-            <h4 onclick="window.location='/movies/{{id}}'" class="card-title">{{title}}/h4>
+            <h4 onclick="window.location='/movies/{{id}}'" class="card-title">{{title}}/h4> {{id}}
                 <img class="card-img img-fluid mb-1" src="{{picture}}" alt="{{title}} picture" onclick="window.location='/movies/{{id}}'"><br>
                 <a onclick="window.location='/movies/{{id}}'" class="btn btn-outline-teal">Details</a>
                 <a onclick="window.location='/movies/{{id}}/delete'" class="btn btn-outline-teal">Delete</a>

@@ -11,31 +11,58 @@ const axios = require('axios');
 router.get('/', (req, res, next) => {
     res.render('index');
 });
-/*
-// --------> 1.) GET / home page
-*/
-router.get('/user-movies', (req, res, next) => {
-    res.render('user-movies');
-});
 
 /*
 // --------> 2.) GET / to user profile page
 */
 router.get('/user-profile', ensureAuthenticated, (req, res) => {
+    res.render('user-profile', { user: req.user });
+});
+
+// 2.1) GET / user movie ---> liked page
+
+router.get('/user-liked', (req, res, next) => {
     Movie.find({ _owner: req.user._id }).then(movies => {
         let liked = [];
-        let hated = [];
-        let watched = [];
         movies.map(movie => {
             if (movie.category === 'like') {
                 liked.push(movie);
-            } else if (movie.category === 'hate') {
-                hated.push(movie);
-            } else if (movie.category === 'watched') {
-                watched.push(movie);
+            } else {
+                console.log('error');
             }
         });
-        res.render('user-profile', { liked, hated, watched });
+        res.render('user-liked', { liked });
+    });
+});
+
+// 2.2) GET / user movie ---> hated page
+
+router.get('/user-hated', (req, res, next) => {
+    Movie.find({ _owner: req.user._id }).then(movies => {
+        let hated = [];
+        movies.map(movie => {
+            if (movie.category === 'hate') {
+                hated.push(movie);
+            } else {
+                console.log('error');
+            }
+        });
+        res.render('user-hated', { hated });
+    });
+});
+// 2.3) GET / user movie ---> watched page
+
+router.get('/user-watched', (req, res, next) => {
+    Movie.find({ _owner: req.user._id }).then(movies => {
+        let watched = [];
+        movies.map(movie => {
+            if (movie.category === 'watched') {
+                watched.push(movie);
+            } else {
+                console.log('error');
+            }
+        });
+        res.render('user-watched', { watched });
     });
 });
 
@@ -191,37 +218,4 @@ router.get('/movies/:id/edit', (req, res, next) => {
     );
 });
 
-// router.get('/movies/:id', (req, res, next) => {
-//     Movie.findById(req.params.id).then(movie => {
-//         let tmdbid = movie.tmdbId;
-//         let dbId = req.params.id;
-//         console.log('____________________________________________________', dbId);
-//         let baseUrl = 'https://api.themoviedb.org/3/movie/';
-//         let baseImgUrl = 'https://image.tmdb.org/t/p/w342/';
-//         const apiKey = process.env.MOVIEDB_API_KEY;
-//         let language = '&language=en-US';
-//         let movieUrl = ''.concat(baseUrl + tmdbid + '?api_key=' + apiKey + language);
-//         axios
-//             .get(movieUrl)
-//             .then(response => {
-//                 // console.log('\n\n\n');
-//                 // console.log('-----------------------------------------');
-//                 // console.log(response.data.results);
-//                 res.render('details', {
-//                     data: response.data,
-//                     image: baseImgUrl + response.data.poster_path,
-//                     title: response.data.title,
-//                     releaseYear: response.data.release_date,
-//                     rating: response.data.vote_average,
-//                     plot: response.data.overview,
-//                     id: response.data.id,
-//                     dbId: dbId
-//                 });
-//             })
-//             .catch(err => {
-//                 console.error(err);
-//             });
-//     });
-//     // console.log('MOVIE__________________________________', movie);
-// });
 module.exports = router;
