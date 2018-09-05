@@ -15,7 +15,7 @@ router.get('/', (req, res, next) => {
 /*
 // --------> 2.) GET / to user profile page
 */
-router.get('/user-profile', (req, res) => {
+router.get('/user-profile', ensureAuthenticated, (req, res) => {
     Movie.find({ _owner: req.user._id }).then(movies => {
         let liked = [];
         let hated = [];
@@ -29,7 +29,6 @@ router.get('/user-profile', (req, res) => {
                 watched.push(movie);
             }
         });
-
         res.render('user-profile', { liked, hated, watched });
     });
 });
