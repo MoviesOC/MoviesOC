@@ -1,18 +1,18 @@
-<div class="liked-movies">
-    <div class="card col 4" style="width: 33.333%;">
+<div class="card-body" id="liked-movies">
+    <div class="card-block col 4" style="width: 33.333%;">
         <div class="list">
-            <p onclick="window.location='/movies/{{id}}'">{{title}}</p>
-            <img src="{{picture}}" alt="{{title}} picture" onclick="window.location='/movies/{{id}}'"><br>
-            <a onclick="window.location='/movies/{{id}}'">Details</a>
-            <a onclick="window.location='/movies/{{id}}/delete'">Delete</a>
-            <form action="/movies/{{id}}/edit" method="get">
-                <select name="category">
-                    <option value="like">Like List</option>
-                    <option value="hate">Hate List</option>
-                    <option value="watched">Watched List</option>
-                </select>
-                <button type="">Change</button>
-            </form>
+            <h4 onclick="window.location='/movies/{{id}}'" class="card-title">{{title}}/h4>
+                <img class="card-img img-fluid mb-1" src="{{picture}}" alt="{{title}} picture" onclick="window.location='/movies/{{id}}'"><br>
+                <a onclick="window.location='/movies/{{id}}'" class="btn btn-outline-teal">Details</a>
+                <a onclick="window.location='/movies/{{id}}/delete'" class="btn btn-outline-teal">Delete</a>
+                <form action="/movies/{{id}}/edit" method="get">
+                    <select name="category">
+                        <option value="like">Like List</option>
+                        <option value="hate">Hate List</option>
+                        <option value="watched">Watched List</option>
+                    </select>
+                    <button type="submit">Change</button>
+                </form>
         </div>
     </div>
 </div>
