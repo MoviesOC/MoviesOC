@@ -3,8 +3,8 @@
 */
 
 #mainNav {
-    height: 60px;
-    background-color: rgba($color: $grey-700, $alpha: 0.8);
+    height: 70px;
+    background-color: rgba($color: $navbar, $alpha: 0.8);
     color: $grey-700;
     text-align: center;
     .navbar-toggler {
@@ -16,8 +16,10 @@
         }
     }
     .navbar-brand {
+        font-family: 'Lobster', cursive;
         color: $white;
-        font-weight: 800;
+        font-weight: 400;
+        font-size: 30px;
         padding: 0.9rem 0;
     }
     .navbar-nav {
@@ -43,7 +45,7 @@
         padding-top: 0;
         padding-bottom: 0;
         border-bottom: none;
-        background-color: rgba($color: $petrol, $alpha: 0.6);
+        background-color: rgba($color: $navbar, $alpha: 0.8);
         transition: background-color 0.3s ease-in-out;
         .navbar-brand {
             padding: 0.5rem 0;

@@ -2,8 +2,8 @@
 // Navbar
 */
 #mainNav {
-  height: 60px;
-  background-color: rgba(81, 86, 90, 0.8);
+  height: 70px;
+  background-color: rgba(22, 76, 224, 0.8);
   color: #51565a;
   text-align: center; }
   #mainNav .navbar-toggler {
@@ -13,8 +13,10 @@
     #mainNav .navbar-toggler:focus {
       outline: none; }
   #mainNav .navbar-brand {
+    font-family: 'Lobster', cursive;
     color: #fff;
-    font-weight: 800;
+    font-weight: 400;
+    font-size: 30px;
     padding: 0.9rem 0; }
   #mainNav .navbar-nav .nav-item:hover {
     color: fade(#fff, 80%);
@@ -32,7 +34,7 @@
       padding-top: 0;
       padding-bottom: 0;
       border-bottom: none;
-      background-color: rgba(14, 96, 151, 0.6);
+      background-color: rgba(22, 76, 224, 0.8);
       transition: background-color 0.3s ease-in-out; }
       #mainNav .navbar-brand {
         padding: 0.5rem 0;
@@ -202,8 +204,22 @@
 card-block {
   padding: 1.5rem; }
 
-.card {
+#movieCard {
   background-color: rgba(255, 255, 255, 0.5); }
+
+#categoryCard {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: #164ce0; }
+
+#categories {
+  margin-top: 2%; }
+
+.header-img {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 25%; }
 
 /*
 // 0.) GENERAL SETUP
@@ -215,16 +231,46 @@ body {
   background-size: 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-image: url(/images/photo-1510130315046-1e47cc196aa0.jpeg);
   font-family: 'Nunito';
   letter-spacing: 0.0625em;
   background-color: #f8f9fa; }
 
 a {
-  color: #64a19d;
-  text-decoration: none; }
+  color: #464a4e;
+  text-decoration: none;
+  font-weight: 500; }
   a:focus, a:hover {
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.1);
+    font-weight: 600;
     text-decoration: none;
-    color: #3c6360; }
+    color: #164ce0; }
+
+#title {
+  text-align: center;
+  margin-bottom: 3%;
+  margin-top: 3%; }
+
+#mov-sugg-div {
+  margin-top: 3%;
+  background-color: aquamarine;
+  width: 80%; }
+
+#picture img {
+  max-width: 100%; }
+
+#titlePage {
+  text-align: center;
+  padding-top: 2%; }
+
+#titleMovie {
+  text-align: center;
+  padding-top: 2%; }
+
+#testtest {
+  background-color: black; }
+
+#all-cards {
+  margin: 0.5rem; }
 
 /*# sourceMappingURL=style.css.map */

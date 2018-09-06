@@ -1,26 +1,42 @@
-<div class="card-body" id="liked-movies">
-    <div class="card-block col 4" style="width: 33.333%;">
-        <div class="list">
-            <h4 class="card-title">{{title}}</h4>
-            <img class="card-img img-fluid mb-1" src="{{picture}}" alt="{{title}} picture"><br>
-            <button type="button" data-toggle="modal" data-target="#myDetailsModal-{{tmdbId}}">Details</button>
-            <button type="button" data-toggle="modal" data-target="#myTrailerModal-{{tmdbId}}">Watch Trailer</button>
-            <a onclick="window.location='/movie/{{id}}/delete'">Delete</a>
-            <form action="/movies/{{id}}/edit" method="get">
-                <select name="category">
-                    <option value="like">Like List</option>
-                    <option value="hate">Hate List</option>
-                    <option value="watched">Watched List</option>
-                </select>
-                <button type="submit">Change</button>
-            </form>
-        </div>
+<div class="card" style="width: 18rem;">
+    <img class="card-img top" src="{{picture}}" alt="{{title}} picture">
+    <div class="card-body">
+        <h5 class="card-title">{{title}} <br>{{release_date}}</h5>
     </div>
+    <div class="card-body">
+        <button type="button" data-toggle="modal" data-target="#myDetailsModal-{{tmdbId}}">Details</button>
+        <button type="button" data-toggle="modal" data-target="#myTrailerModal-{{tmdbId}}">Watch Trailer</button>
+        <a onclick="window.location='/movie/{{id}}/delete'">Delete</a>
+    </div>
+    <form action="/movies/{{id}}/edit" method="get">
+        <select name="category">
+            <option value="like">Like List</option>
+            <option value="hate">Hate List</option>
+            <option value="watched">Watched List</option>
+        </select>
+        <button type="submit">Change</button>
+    </form>
 </div>
 
-
-
-<hr>
-<pre>
-    {{movie}}
-</pre>
+{{!--
+<div class="card-body">
+    <div class="card border-primary" style="width: 18rem;" id="movieCard">
+        <div class="card-block col 4" style="width: 33.333%;">
+            <div class="list">
+                <h4 class="card-title">{{title}}</h4>
+                <img class="card-img top" src="{{picture}}" alt="{{title}} picture">
+                <button type="button" data-toggle="modal" data-target="#myDetailsModal-{{tmdbId}}">Details</button>
+                <button type="button" data-toggle="modal" data-target="#myTrailerModal-{{tmdbId}}">Watch Trailer</button>
+                <a onclick="window.location='/movie/{{id}}/delete'">Delete</a>
+                <form action="/movies/{{id}}/edit" method="get">
+                    <select name="category">
+                        <option value="like">Like List</option>
+                        <option value="hate">Hate List</option>
+                        <option value="watched">Watched List</option>
+                    </select>
+                    <button type="submit">Change</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> --}}
