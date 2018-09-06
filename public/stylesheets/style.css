@@ -270,7 +270,7 @@ h2 {
   /* Added */
   margin-bottom: 30px;
   /* Added */
-  height: 500px;
+  height: 450px;
   text-align: center;
   align-content: center;
   margin-right: 20px; }
@@ -281,8 +281,10 @@ h2 {
   margin-right: 30px; }
 
 .card-body {
-  border: red 3px solid;
-  padding: 10px; }
+  padding: 20px; }
+
+.card-body a form button {
+  border: red solid 3px; }
 
 /*
 // 0.) GENERAL SETUP
