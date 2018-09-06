@@ -4,13 +4,15 @@ const router = express.Router();
 const Movie = require('../models/Movie');
 const User = require('../models/User');
 const axios = require('axios');
+const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
-/*
+const checkLoggedIn =
+    /*
 // -------------------> 1.) GET / HOME PAGE -->> index.hbs
 */
-router.get('/', (req, res, next) => {
-    res.render('index');
-});
+    router.get('/', (req, res, next) => {
+        res.render('index');
+    });
 
 /*
 // -------------------> 2.) GET / MOVIE-SUGGESTION PAGE -->> movie-suggestion.hbs
@@ -18,6 +20,7 @@ router.get('/', (req, res, next) => {
 
 // --------> 2.1) GET / Comedy, Action, Thriller, Drama, Science Fiction, Documentary, Chick Flick &Random
 router.get('/movie-suggestion', ensureAuthenticated, (req, res, next) => {
+    console.log('Tried suggesting');
     let baseUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=';
     let baseImgUrl = 'https://image.tmdb.org/t/p/w342/';
     const apiKey = process.env.MOVIEDB_API_KEY;
@@ -353,35 +356,37 @@ router.get('/find-movies', (req, res, next) => {
     let page = '&page=1';
     let searchUrl = ''.concat(baseUrl + 'api_key=' + apiKey + language + query + searchQuery + page);
     axios.get(searchUrl).then(result => {
+        console.log(result.data.results);
         res.render('search-result', { result: result.data.results });
     });
 });
+
 /*
 // -------------------> 7.) Add search result to Lists
 */
-router.get('/find-movies-add', (req, res, next) => {
-    console.log('================================================');
-    console.log(req.params);
-    Movie.findById(req.body.id).then(movie => {
-        console.log(movie);
-        const { title, tmdbId, picture } = req.body;
-        const ownerId = req.user._id;
-        const newMovie = new Movie({
-            title,
-            tmdbId,
-            picture,
-            category: req.params.category,
-            _owner: ownerId
-        });
-        newMovie
-            .save()
-            .then(movie => {
-                res.redirect('/'); // ?genre=' + req.body.genre
-            })
-            .catch(error => {
-                console.log('ERROR', error);
-            });
-    });
-});
+// router.get('/find-movies-add', (req, res, next) => {
+//     console.log('================================================');
+//     console.log(req.params);
+//     Movie.findById(req.body.id).then(movie => {
+//         console.log(movie);
+//         const { title, tmdbId, picture } = req.body;
+//         const ownerId = req.user._id;
+//         const newMovie = new Movie({
+//             title,
+//             tmdbId,
+//             picture,
+//             category: req.params.category,
+//             _owner: ownerId
+//         });
+//         newMovie
+//             .save()
+//             .then(movie => {
+//                 res.redirect('/'); // ?genre=' + req.body.genre
+//             })
+//             .catch(error => {
+//                 console.log('ERROR', error);
+//             });
+//     });
+// });
 
 module.exports = router;
