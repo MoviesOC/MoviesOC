@@ -352,8 +352,34 @@ router.get('/find-movies', (req, res, next) => {
     let page = '&page=1';
     let searchUrl = ''.concat(baseUrl + 'api_key=' + apiKey + language + query + searchQuery + page);
     axios.get(searchUrl).then(result => {
-        console.log(result.data.results[0]);
         res.render('search-result', { result: result.data.results });
+    });
+});
+/*
+// -------------------> 7.) Add search result to Lists
+*/
+router.get('/find-movies-add', (req, res, next) => {
+    console.log('================================================');
+    console.log(req.params);
+    Movie.findById(req.body.id).then(movie => {
+        console.log(movie);
+        const { title, tmdbId, picture } = req.body;
+        const ownerId = req.user._id;
+        const newMovie = new Movie({
+            title,
+            tmdbId,
+            picture,
+            category: req.params.category,
+            _owner: ownerId
+        });
+        newMovie
+            .save()
+            .then(movie => {
+                res.redirect('/'); // ?genre=' + req.body.genre
+            })
+            .catch(error => {
+                console.log('ERROR', error);
+            });
     });
 });
 

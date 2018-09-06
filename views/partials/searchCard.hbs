@@ -1,12 +1,12 @@
 <div class="card" style="width: 18rem;">
-    <img class="card-img top" src="http://image.tmdb.org/t/p/w92/{{poster_path}}" alt="">
+    <img class="card-img top" src="http://image.tmdb.org/t/p/w500/{{poster_path}}" alt="">
     <div class="card-body">
-        <h5 class="card-title">{title}} -- {{release_date}}</h5>
+        <h5 class="card-title">{{title}} -- {{release_date}}</h5>
     </div>
     <div class="card-body">
-        <a onclick="window.location='/movies/{{id}}'" class="card-link">Details</a>
+        <button type="button" data-toggle="modal" data-target="#mySearchDetailsModal-{{tmdbId}}">Details</button>
     </div>
-    <form action="/movie-suggestion/:category" method="get">
+    <form action='/find-movies-add' method="get">
         <select name="category">
             <option value="like">Like List</option>
             <option value="hate">Hate List</option>
