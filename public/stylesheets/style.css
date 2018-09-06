@@ -214,12 +214,13 @@ card-block {
 #categories {
   margin-top: 2%; }
 
-.header-img {
-  position: fixed;
-  left: 0;
-  top: 0;
+#header-img {
   width: 100%;
-  height: 25%; }
+  height: 10%; }
+
+#profile-img {
+  width: 15%;
+  border-radius: 50%; }
 
 /*
 // 0.) GENERAL SETUP
@@ -257,7 +258,7 @@ a {
   width: 80%; }
 
 #picture img {
-  max-width: 100%; }
+  width: 100%; }
 
 #titlePage {
   text-align: center;
