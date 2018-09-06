@@ -214,6 +214,13 @@ card-block {
 #categories {
   margin-top: 2%; }
 
+.header-img {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 25%; }
+
 /*
 // 0.) GENERAL SETUP
 */
@@ -262,5 +269,8 @@ a {
 
 #testtest {
   background-color: black; }
+
+#all-cards {
+  margin: 0.5rem; }
 
 /*# sourceMappingURL=style.css.map */

@@ -3,8 +3,9 @@
 @import 'buttons.scss';
 @import 'movie-detail.scss';
 @import 'signup-login.scss';
-@import 'movieCard.scss';
-@import 'categoryCard.scss';
+@import 'movie-card.scss';
+@import 'category-card.scss';
+@import 'user-profile.scss';
 // @import url('//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css');
 /*
 // 0.) GENERAL SETUP
@@ -94,4 +95,8 @@ a {
 }
 #testtest {
     background-color: black;
+}
+
+#all-cards {
+    margin: 0.5rem;
 }
