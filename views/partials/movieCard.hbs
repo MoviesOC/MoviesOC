@@ -1,9 +1,10 @@
 <div class="card-body" id="liked-movies">
     <div class="card-block col 4" style="width: 33.333%;">
         <div class="list">
-            <h4 class="card-title">{{title}}</h4> {{id}}
+            <h4 class="card-title">{{title}}</h4>
             <img class="card-img img-fluid mb-1" src="{{picture}}" alt="{{title}} picture"><br>
-            <a onclick="window.location='/movies/{{id}}'">Details</a>
+            <button type="button" data-toggle="modal" data-target="#myDetailsModal-{{tmdbId}}">Details</button>
+            <button type="button" data-toggle="modal" data-target="#myTrailerModal-{{tmdbId}}">Watch Trailer</button>
             <a onclick="window.location='/movie/{{id}}/delete'">Delete</a>
             <form action="/movies/{{id}}/edit" method="get">
                 <select name="category">
@@ -16,3 +17,10 @@
         </div>
     </div>
 </div>
+
+
+
+<hr>
+<pre>
+    {{movie}}
+</pre>

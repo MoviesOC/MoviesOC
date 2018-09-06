@@ -107,28 +107,60 @@ router.get('/user-profile', ensureAuthenticated, (req, res) => {
 
 router.get('/user-movies/:category', (req, res, next) => {
     let movieCategory = req.params.category;
-    Movie.find({ _owner: req.user._id }).then(movies => {
-        let moviesArray = [];
-        movies.map(movie => {
-            if (movie.category === movieCategory) {
-                moviesArray.push(movie);
-            } else {
-                console.log('error');
+    Movie.find({ $and: [{ _owner: req.user._id }, { category: movieCategory }] }).then(movies => {
+        let baseImgUrl = 'https://image.tmdb.org/t/p/w342/';
+        let baseUrl = 'https://api.themoviedb.org/3/movie/';
+        const apiKey = process.env.MOVIEDB_API_KEY;
+        let language = '&language=en-US';
+
+        Promise.all(
+            movies.map(movie => {
+                return axios.get(
+                    baseUrl +
+                        movie.tmdbId +
+                        '?api_key=' +
+                        apiKey +
+                        language +
+                        '&append_to_response=videos, recommendations'
+                );
+            })
+        ).then(responses => {
+            let moviesInfo = responses.map((response, i) => {
+                let youtubeKey =
+                    response.data.videos.results.length !== 0
+                        ? response.data.videos.results[0].key
+                        : null;
+                if (youtubeKey) {
+                    var youtubeLink = 'https://www.youtube.com/embed/' + youtubeKey + '?autoplay=0';
+                }
+                return {
+                    title: response.data.title,
+                    genres: response.data.genres,
+                    tmdbId: response.data.id,
+                    plot: response.data.overview,
+                    picture: baseImgUrl + response.data.poster_path,
+                    year: response.data.release_date,
+                    tagline: response.data.tagline,
+                    rating: response.data.vote_average,
+                    youtubeLink: youtubeLink,
+                    id: movies[i]._id
+                };
+            });
+            console.log(moviesInfo);
+            let word = '';
+            switch (movieCategory) {
+                case 'like':
+                    word = 'liked';
+                    break;
+                case 'hate':
+                    word = 'hated';
+                    break;
+                case 'watched':
+                    word = 'have already seen';
+                    break;
             }
+            res.render('user-movies', { movieInfo: moviesInfo, word });
         });
-        let word = '';
-        switch (movieCategory) {
-            case 'like':
-                word = 'liked';
-                break;
-            case 'hate':
-                word = 'hated';
-                break;
-            case 'watched':
-                word = 'have already seen';
-                break;
-        }
-        res.render('user-movies', { movies: moviesArray, word });
     });
 });
 
@@ -171,6 +203,7 @@ router.get('/movies/:id', (req, res, next) => {
     Movie.findById(req.params.id).then(movie => {
         let tmdbid = movie.tmdbId;
         let dbId = req.params.id;
+        console.log(tmdbid);
         let baseUrl = 'https://api.themoviedb.org/3/movie/';
         let baseImgUrl = 'https://image.tmdb.org/t/p/w342/';
         const apiKey = process.env.MOVIEDB_API_KEY;
@@ -198,7 +231,8 @@ router.get('/movies/:id', (req, res, next) => {
                     id: response.data.id,
                     dbId: dbId,
                     youtubeLink: youtubeLink,
-                    genres: response.data.genres
+                    genres: response.data.genres,
+                    tmdbid: tmdbid
                 });
             })
             .catch(err => {
@@ -224,11 +258,5 @@ router.get('/find-movies', (req, res, next) => {
         res.render('search-result', { result: result.data.results });
     });
 });
-
-var numbers = [4, 2, 5, 1, 3];
-numbers.sort(function(a, b) {
-    return a - b;
-});
-console.log(numbers);
 
 module.exports = router;
