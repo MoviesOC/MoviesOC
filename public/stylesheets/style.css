@@ -219,8 +219,12 @@ card-block {
   height: 10%; }
 
 #profile-img {
-  width: 15%;
+  width: 40%;
   border-radius: 50%; }
+
+.size {
+  background: red;
+  width: 30%; }
 
 /*
 // 0.) GENERAL SETUP
