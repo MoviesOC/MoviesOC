@@ -3,7 +3,7 @@
 */
 #mainNav {
   height: 70px;
-  background-color: rgba(22, 76, 224, 0.8);
+  background-color: #164ce0;
   color: #51565a;
   text-align: center; }
   #mainNav .navbar-toggler {
@@ -75,14 +75,14 @@
 
 .btn-primary {
   background-color: #f8f9fa;
-  border: 1px solid #64a19d; }
+  border: 1px solid #164ce0; }
   .btn-primary:hover {
-    background-color: #4f837f; }
+    background-color: #113cb2; }
   .btn-primary:focus {
-    background-color: #4f837f;
+    background-color: #113cb2;
     color: white; }
   .btn-primary:active {
-    background-color: #467370 !important; }
+    background-color: #0f349a !important; }
 
 #search {
   box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
@@ -92,15 +92,15 @@
   text-transform: uppercase;
   letter-spacing: 0.15rem;
   background-color: #f8f9fa;
-  border: 1px solid #64a19d;
+  border: 1px solid #164ce0;
   border-radius: 4px; }
   #search:hover {
     background-color: #c1c9d0; }
   #search:focus {
-    background-color: #4f837f;
+    background-color: #113cb2;
     color: white; }
   #search:active {
-    background-color: #467370 !important; }
+    background-color: #0f349a !important; }
 
 /*
 // Movie Detail page
@@ -115,19 +115,19 @@
       #projects .featured-text {
         background-color: #fff;
         padding: 0 0 0 2rem;
-        border-left: 0.5rem solid #64a19d; } }
+        border-left: 0.5rem solid #164ce0; } }
   #projects .project-text {
     font-size: 90%; }
     @media (min-width: 992px) {
       #projects .project-text {
         background-color: #adb5bd; }
         #projects .project-text hr {
-          border-color: #64a19d;
+          border-color: #164ce0;
           border-width: 0.25rem;
           width: 30%; } }
 
 /*
-// 2.2) Login and Signup style
+2.2) Login and Signup style
 */
 .form-container {
   margin: 30px auto;
@@ -222,6 +222,11 @@ card-block {
   width: 15%;
   border-radius: 50%; }
 
+#background-profile {
+  width: 100%;
+  height: 10%;
+  background-color: #f6fadf; }
+
 /*
 // 0.) GENERAL SETUP
 */
@@ -253,6 +258,7 @@ a {
   margin-top: 3%; }
 
 #mov-sugg-div {
+  padding: 1%;
   margin-top: 3%;
   background-color: aquamarine;
   width: 80%; }
@@ -273,5 +279,8 @@ a {
 
 #all-cards {
   margin: 0.5rem; }
+
+.home .btn.btn-block {
+  color: black; }
 
 /*# sourceMappingURL=style.css.map */

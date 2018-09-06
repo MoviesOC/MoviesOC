@@ -1,5 +1,5 @@
 <!-- views/auth/signup.hbs -->
-<h2>Signup</h2>
+<h2>Signup to find awesome movies!</h2>
 
 <form action="/auth/signup" method="POST" id="form-container">
   <label for="username">Username</label>
@@ -9,9 +9,8 @@
 
   <label for="password">Password</label>
   <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
-  {{#if message }}
-    <div class="error-message">{{ message }}</div>
+  <br> {{#if message }}
+  <div class="error-message">{{ message }}</div>
   {{/if}}
 
   <br><br>

@@ -23,12 +23,13 @@ router.get('/movie-suggestion', ensureAuthenticated, (req, res, next) => {
     const apiKey = process.env.MOVIEDB_API_KEY;
     let language = '&language=en-US&with_original_language=en';
     let voteAverage = '&vote_average.gte=6.5';
+    let onlyNew = '&release_date.gte=1995-01-01';
     let page = '&page=' + randomNum(100);
     let resultIndex = randomNum(20);
     let { genre } = req.query;
     let movieGenreId = '';
     if (genre) movieGenreId = '&with_genres=' + genre;
-    let movieUrl = ''.concat(baseUrl + apiKey + language + voteAverage + page + movieGenreId);
+    let movieUrl = ''.concat(baseUrl + apiKey + language + voteAverage + onlyNew + page + movieGenreId);
 
     // Get API information with axios:
     axios

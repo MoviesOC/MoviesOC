@@ -78,6 +78,7 @@ a {
     margin-top: 3%;
 }
 #mov-sugg-div {
+    padding: 1%;
     margin-top: 3%;
     background-color: aquamarine;
     width: 80%;
@@ -99,4 +100,10 @@ a {
 
 #all-cards {
     margin: 0.5rem;
+}
+
+.home {
+    .btn.btn-block {
+        color: black;
+    }
 }
