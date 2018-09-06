@@ -1,18 +1,17 @@
 <div class="card" style="width: 18rem;">
-    <img class="card-img top" src="{{picture}}" alt="{{title}} picture">
+    <img class="card-img top" src="http://image.tmdb.org/t/p/w92/{{poster_path}}" alt="">
     <div class="card-body">
-        <h5 class="card-title">{{title}}</h5>
+        <h5 class="card-title">{title}} -- {{release_date}}</h5>
     </div>
     <div class="card-body">
         <a onclick="window.location='/movies/{{id}}'" class="card-link">Details</a>
-        <a onclick="window.location='/movie/{{id}}/delete'" class="card-link">Delete</a>
     </div>
-    <form action="/movies/{{id}}/edit" method="get">
+    <form action="/movie-suggestion/:category" method="get">
         <select name="category">
             <option value="like">Like List</option>
             <option value="hate">Hate List</option>
             <option value="watched">Watched List</option>
         </select>
-        <button type="submit">Change</button>
+        <button type="submit">Add to list</button>
     </form>
 </div>

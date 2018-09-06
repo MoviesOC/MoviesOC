@@ -31,3 +31,24 @@
         background-color: darken($primary, 15%) !important;
     }
 }
+#search {
+    box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
+    padding: 0.7rem 1rem;
+    font-family: 'Varela Round';
+    font-size: 80%;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    background-color: $grey-100;
+    border: 1px solid $primary;
+    border-radius: 4px;
+    &:hover {
+        background-color: darken($grey-300, 10%);
+    }
+    &:focus {
+        background-color: darken($primary, 10%);
+        color: white;
+    }
+    &:active {
+        background-color: darken($primary, 15%) !important;
+    }
+}

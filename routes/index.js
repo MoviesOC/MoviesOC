@@ -15,15 +15,20 @@ router.get('/', (req, res, next) => {
 /*
 // -------------------> 2.) GET / MOVIE-SUGGESTION PAGE -->> movie-suggestion.hbs
 */
+// --------> 2.1) Variables:
+let baseUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=';
+let baseImgUrl = 'https://image.tmdb.org/t/p/w342/';
+const apiKey = process.env.MOVIEDB_API_KEY;
+let language = '&language=en-US&with_original_language=en';
+let voteAverage = '&vote_average.gte=6.5';
+let page = '&page=' + randomNum(100);
+let resultIndex = randomNum(20);
+let classicMovie = '&release_date.gte=1900-01-01&release_date.lte=1990-01-01';
+let trashyMovie = '&vote_average.lte=4.5&release_date.lte=2010-01-01';
 
+// --------> 2.2) GET / Comedy, Action, Thriller, Drama, Science Fiction, Documentary, Chick Flick &Random
 router.get('/movie-suggestion', ensureAuthenticated, (req, res, next) => {
     let { genre } = req.query;
-    let baseUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=';
-    let baseImgUrl = 'https://image.tmdb.org/t/p/w342/';
-    const apiKey = process.env.MOVIEDB_API_KEY;
-    let language = '&language=en-US&with_original_language=en';
-    let voteAverage = '&vote_average.gte=6.5';
-    let page = '&page=' + randomNum(100);
     let resultIndex = randomNum(20);
     let movieGenreId = '';
     if (genre) movieGenreId = '&with_genres=' + genre;
@@ -51,6 +56,68 @@ router.get('/movie-suggestion', ensureAuthenticated, (req, res, next) => {
             console.error(err);
         });
 });
+// // // --------> 2.3) GET / Classic Movie
+router.get('/movie-suggestion/classic', ensureAuthenticated, (req, res, next) => {
+    let { genre } = req.query;
+    let resultIndex = randomNum(20);
+    let movieGenreId = '';
+    if (genre) movieGenreId = '&with_genres=' + genre;
+
+    let movieUrl = ''.concat(
+        baseUrl + apiKey + language + voteAverage + page + classicMovie + movieGenreId
+    );
+
+    // Get API information with axios:
+    axios
+        .get(movieUrl)
+        .then(response => {
+            res.render('movie-suggestion', {
+                user: req.user,
+                data: response.data,
+                image: baseImgUrl + response.data.results[resultIndex].poster_path,
+                title: response.data.results[resultIndex].title,
+                releaseYear: response.data.results[resultIndex].release_date,
+                rating: response.data.results[resultIndex].vote_average,
+                plot: response.data.results[resultIndex].overview,
+                id: response.data.results[resultIndex].id,
+                genre: req.query.genre,
+                myCategory: 'classic'
+            });
+        })
+        .catch(err => {
+            console.error(err);
+        });
+});
+// // --------> 2.3) GET / Trashy Movie
+router.get('/movie-suggestion/trashy', ensureAuthenticated, (req, res, next) => {
+    let { genre } = req.query;
+    let movieGenreId = '';
+    let resultIndex = randomNum(20);
+    if (genre) movieGenreId = '&with_genres=' + genre;
+
+    let movieUrl = ''.concat(baseUrl + apiKey + language + trashyMovie + page + movieGenreId);
+
+    // Get API information with axios:
+    axios
+        .get(movieUrl)
+        .then(response => {
+            res.render('movie-suggestion', {
+                user: req.user,
+                data: response.data,
+                image: baseImgUrl + response.data.results[resultIndex].poster_path,
+                title: response.data.results[resultIndex].title,
+                releaseYear: response.data.results[resultIndex].release_date,
+                rating: response.data.results[resultIndex].vote_average,
+                plot: response.data.results[resultIndex].overview,
+                id: response.data.results[resultIndex].id,
+                genre: req.query.genre,
+                myCategory: 'trashy'
+            });
+        })
+        .catch(err => {
+            console.error(err);
+        });
+});
 
 /*
 // --------> 2.1) Push like/hate/already seen movie to user profile page array
@@ -70,6 +137,28 @@ router.post('/movie-suggestion/:category', (req, res, next) => {
         .save()
         .then(movie => {
             res.redirect('/movie-suggestion/?genre=' + req.body.genre);
+        })
+        .catch(error => {
+            console.log('ERROR', error);
+        });
+});
+/*
+// --------> 2.1) Push like/hate/already when you're in Trashy movie route:
+*/
+router.post('/movie-suggestion/trashy/:category', (req, res, next) => {
+    const { title, tmdbId, picture } = req.body;
+    const ownerId = req.user._id;
+    const newMovie = new Movie({
+        title,
+        tmdbId,
+        picture,
+        category: req.params.category,
+        _owner: ownerId
+    });
+    newMovie
+        .save()
+        .then(movie => {
+            res.redirect('/movie-suggestion/trashy/'); // ?genre=' + req.body.genre
         })
         .catch(error => {
             console.log('ERROR', error);

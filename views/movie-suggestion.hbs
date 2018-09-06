@@ -47,10 +47,14 @@
                     </form>
                   </div>
                   <div class="col-4">
-                    <form action="/movie-suggestion/" method="GET">
-                      <input type="hidden" name="genre" value="{{genre}}">
-                      <button class="btn btn-primary mx-auto">Try again</button>
-                    </form>
+                    {{#if myCategory}}
+                    <form action="/movie-suggestion/{{myCategory}}" method="GET">
+                      {{else}}
+                      <form action="/movie-suggestion/" method="GET">
+                        {{/if}}
+                        <input type="hidden" name="genre" value="{{genre}}">
+                        <button class="btn btn-primary mx-auto">Try again</button>
+                      </form>
                   </div>
                 </div>
               </div>

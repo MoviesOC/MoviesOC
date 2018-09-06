@@ -1,7 +1,29 @@
-<pre>
 <h1>Movies I {{category}}</h1>
-</pre> {{#each movies}}
-<div class="cards-container">
-    {{> movieCard this}}
+<div class="row">
+    {{#each movies}}
+    <div class="col-md-3">
+        {{> movieCard this}}
+    </div>
+    {{/each}}
 </div>
-{{/each}}
+
+{{!--
+<div class="scrollbar scrollbar-lady-lips">
+    <div class="row force-overflow">
+        {{#each movies}}
+        <div class="cards-container col-md-3">
+            {{> movieCard this}}
+        </div>
+        {{/each}}
+    </div>
+</div> --}} {{!--
+<div class="card-deck-wrapper">
+    <div class="card-deck">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text">Looks like the Sun has returned. Here's <a href="#" class="card-link">why</a>.</p>
+            </div>
+        </div>
+
+    </div>
+</div> --}}
