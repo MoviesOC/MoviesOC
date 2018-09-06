@@ -1,30 +1,46 @@
 <div class="container mt-5">
-    <div align="center">
-        <h3>Hello {{this.user.username}}</h3>
-    </div>
-
     <div class="row mt-5">
         <div class="col-md-6 mb-3 mb-md-0 size">
-            <div class="">
-                <img src="/images/profile-img.png" alt="" id="profile-img">
+            <div class="row mb-4">
+                <div class="">
+                    <img src="/images/profile-img.png" alt="" id="profile-img">
+                </div>
+                <div class="mt-5">
+                    <h2>Nice<br> to see you <br>{{this.user.username}}</h2>
+                </div>
+
             </div>
-            <p>{{this.user.username}}</p>
             <div class=" border rounded p-3">
                 <h4>About</h4>
                 <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
                     labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
                     dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
                     amet</p>
-                <h4>Number of marked movies:</h4>
-                <h5>{{moviesNumber}}</h5>
+                <h4>Number of marked movies: {{moviesNumber}}</h4>
 
             </div>
 
         </div>
-        <div class="col-md-6 mb-3 mb-md-0" align="center">
-            <a class="btn btn-success btn-block" href="/user-movies/like" id="category-btn">Liked</a><br>
-            <a class="btn btn-success btn-block mt-2" href="/user-movies/hate" id="category-btn">Hated</a> <br>
-            <a class="btn btn-success btn-block mt-2" href="/user-movies/watched" id="category-btn">Watched</a> <br>
+        <div class="col-md-6 mb-3 mb-md-0 mt-5" align="center">
+            <div>
+                <a class="btn btn-success btn-block" href="/user-movies/like" id="category-btn">Liked</a><br>
+                <a class="btn btn-success btn-block mt-2" href="/user-movies/watched" id="category-btn">Watched</a> <br>
+                <a class="btn btn-success btn-block mt-2" href="/user-movies/hate" id="category-btn">Hated</a> <br>
+            </div>
+            <div class="row m-5 likedParent">
+                <div class="border rounded col-md-4 p-3 liked" onclick="window.location='/user-movies/like'">
+                    <img src="{{lastLiked1.picture}}" alt="{{lastLiked1.title}} picture">
+                    <p>{{lastLiked1.title}}</p>
+                </div>
+                <div class="border rounded col-md-4 p-3 liked" onclick="window.location='/user-movies/like'">
+                    <img src="{{lastLiked2.picture}}" alt="{{lastLiked2.title}} picture">
+                    <p>{{lastLiked2.title}}</p>
+                </div>
+                <div class="border rounded col-md-4 p-3 liked" onclick="window.location='/user-movies/like'">
+                    <img src="{{lastLiked3.picture}}" alt="{{lastLiked3.title}} picture">
+                    <p>{{lastLiked3.title}}</p>
+                </div>
+            </div>
         </div>
     </div>
 

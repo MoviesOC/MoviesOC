@@ -219,12 +219,23 @@ card-block {
   height: 10%; }
 
 #profile-img {
-  width: 40%;
+  width: 60%;
   border-radius: 50%; }
 
-.size {
-  background: red;
-  width: 30%; }
+.likedParent {
+  display: flex;
+  justify-content: space-evenly; }
+
+.liked {
+  object-fit: cover;
+  border: green 3px solid;
+  cursor: pointer; }
+
+.liked img {
+  max-width: 80%; }
+
+h2 {
+  text-align: center; }
 
 /*
 // 0.) GENERAL SETUP
