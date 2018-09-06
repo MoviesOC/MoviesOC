@@ -32,7 +32,7 @@
       padding-top: 0;
       padding-bottom: 0;
       border-bottom: none;
-      background-color: rgba(60, 127, 136, 0.6);
+      background-color: rgba(14, 96, 151, 0.6);
       transition: background-color 0.3s ease-in-out; }
       #mainNav .navbar-brand {
         padding: 0.5rem 0;
@@ -226,12 +226,5 @@ a {
   a:focus, a:hover {
     text-decoration: none;
     color: #3c6360; }
-
-h1,
-h2,
-h3 {
-  margin: 30px auto;
-  text-align: center;
-  width: 380px; }
 
 /*# sourceMappingURL=style.css.map */

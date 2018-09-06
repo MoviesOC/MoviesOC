@@ -15,26 +15,20 @@ router.get('/', (req, res, next) => {
 /*
 // -------------------> 2.) GET / MOVIE-SUGGESTION PAGE -->> movie-suggestion.hbs
 */
-// --------> 2.1) Variables:
-let baseUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=';
-let baseImgUrl = 'https://image.tmdb.org/t/p/w342/';
-const apiKey = process.env.MOVIEDB_API_KEY;
-let language = '&language=en-US&with_original_language=en';
-let voteAverage = '&vote_average.gte=6.5';
-let page = '&page=' + randomNum(100);
-let resultIndex = randomNum(20);
-let classicMovie = '&release_date.gte=1900-01-01&release_date.lte=1990-01-01';
-let trashyMovie = '&vote_average.lte=4.5&release_date.lte=2010-01-01';
 
-// --------> 2.2) GET / Comedy, Action, Thriller, Drama, Science Fiction, Documentary, Chick Flick &Random
+// --------> 2.1) GET / Comedy, Action, Thriller, Drama, Science Fiction, Documentary, Chick Flick &Random
 router.get('/movie-suggestion', ensureAuthenticated, (req, res, next) => {
-    let { genre } = req.query;
+    let baseUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=';
+    let baseImgUrl = 'https://image.tmdb.org/t/p/w342/';
+    const apiKey = process.env.MOVIEDB_API_KEY;
+    let language = '&language=en-US&with_original_language=en';
+    let voteAverage = '&vote_average.gte=6.5';
+    let page = '&page=' + randomNum(100);
     let resultIndex = randomNum(20);
+    let { genre } = req.query;
     let movieGenreId = '';
     if (genre) movieGenreId = '&with_genres=' + genre;
-
     let movieUrl = ''.concat(baseUrl + apiKey + language + voteAverage + page + movieGenreId);
-    // (let noAdult = '&include_adult=false'; // include movies + 18 or not)
 
     // Get API information with axios:
     axios
@@ -56,8 +50,16 @@ router.get('/movie-suggestion', ensureAuthenticated, (req, res, next) => {
             console.error(err);
         });
 });
-// // // --------> 2.3) GET / Classic Movie
+
+// --------> 2.2) GET / Classic Movie
 router.get('/movie-suggestion/classic', ensureAuthenticated, (req, res, next) => {
+    let baseUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=';
+    let baseImgUrl = 'https://image.tmdb.org/t/p/w342/';
+    const apiKey = process.env.MOVIEDB_API_KEY;
+    let language = '&language=en-US&with_original_language=en';
+    let voteAverage = '&vote_average.gte=6.5';
+    let page = '&page=' + randomNum(100);
+    let classicMovie = '&release_date.gte=1900-01-01&release_date.lte=1990-01-01';
     let { genre } = req.query;
     let resultIndex = randomNum(20);
     let movieGenreId = '';
@@ -88,8 +90,15 @@ router.get('/movie-suggestion/classic', ensureAuthenticated, (req, res, next) =>
             console.error(err);
         });
 });
-// // --------> 2.3) GET / Trashy Movie
+
+// --------> 2.3) GET / Trashy Movie
 router.get('/movie-suggestion/trashy', ensureAuthenticated, (req, res, next) => {
+    let baseUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=';
+    let baseImgUrl = 'https://image.tmdb.org/t/p/w342/';
+    const apiKey = process.env.MOVIEDB_API_KEY;
+    let language = '&language=en-US&with_original_language=en';
+    let page = '&page=' + randomNum(100);
+    let trashyMovie = '&vote_average.lte=4.5&release_date.lte=2010-01-01';
     let { genre } = req.query;
     let movieGenreId = '';
     let resultIndex = randomNum(20);
@@ -120,7 +129,7 @@ router.get('/movie-suggestion/trashy', ensureAuthenticated, (req, res, next) => 
 });
 
 /*
-// --------> 2.1) Push like/hate/already seen movie to user profile page array
+// --------> 2.4) Push like/hate/already seen movie to user profile page array
 */
 
 router.post('/movie-suggestion/:category', (req, res, next) => {
@@ -143,7 +152,7 @@ router.post('/movie-suggestion/:category', (req, res, next) => {
         });
 });
 /*
-// --------> 2.1) Push like/hate/already when you're in Trashy movie route:
+// --------> 2.5) Push like/hate/already when you're in Trashy movie route:
 */
 router.post('/movie-suggestion/trashy/:category', (req, res, next) => {
     const { title, tmdbId, picture } = req.body;
