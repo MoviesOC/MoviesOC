@@ -16,10 +16,15 @@
     object-fit: cover;
     border: green 3px solid;
     cursor: pointer;
+    height: 190px;
 }
 
 .liked img {
-    max-width: 80%;
+    max-width: 75%;
+}
+
+.liked p {
+    font-size: 15px;
 }
 
 h2 {

@@ -365,7 +365,7 @@ router.get('/find-movies', (req, res, next) => {
     let searchUrl = ''.concat(baseUrl + 'api_key=' + apiKey + language + query + searchQuery + page);
     axios.get(searchUrl).then(result => {
         console.log(result.data.results);
-        res.render('search-result', { result: result.data.results });
+        res.render('search-result', { result: result.data.results, searchQuery });
     });
 });
 

@@ -1,11 +1,18 @@
-<h1>Your Search Result</h1>
-<div class="row">
+<div id="title">
+    <h4>Search Results for: {{searchQuery}}</h4>
+</div>
+<div class="row cardContainer">
     {{#each result}}
-    <div class="col-md-3">
+    <div class="col-md-4">
         {{> searchCard this}}
     </div>
     {{/each}}
 </div>
+
+
+
+
+
 
 {{#each result}}
 <div class="videos-container">

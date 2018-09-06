@@ -1,0 +1,27 @@
+.card img {
+    max-width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+}
+
+.card {
+    /* Added */
+    float: none; /* Added */
+    margin-bottom: 30px; /* Added */
+    height: 500px;
+    text-align: center;
+    align-content: center;
+    margin-right: 20px;
+}
+
+.cardContainer {
+    padding-left: 60px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.card-body {
+    border: red 3px solid;
+    padding: 10px;
+}
