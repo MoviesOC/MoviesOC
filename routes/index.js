@@ -4,20 +4,22 @@ const router = express.Router();
 const Movie = require('../models/Movie');
 const User = require('../models/User');
 const axios = require('axios');
+const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
-/*
+const checkLoggedIn =
+    /*
 // -------------------> 1.) GET / HOME PAGE -->> index.hbs
 */
-router.get('/', (req, res, next) => {
-    res.render('index');
-});
+    router.get('/', (req, res, next) => {
+        res.render('index');
+    });
 
 /*
 // -------------------> 2.) GET / MOVIE-SUGGESTION PAGE -->> movie-suggestion.hbs
 */
 
 // --------> 2.1) GET / Comedy, Action, Thriller, Drama, Science Fiction, Documentary, Chick Flick &Random
-router.get('/movie-suggestion', ensureAuthenticated, (req, res, next) => {
+router.get('/movie-suggestion', ensureLoggedIn, (req, res, next) => {
     let baseUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=';
     let baseImgUrl = 'https://image.tmdb.org/t/p/w342/';
     const apiKey = process.env.MOVIEDB_API_KEY;
@@ -52,7 +54,7 @@ router.get('/movie-suggestion', ensureAuthenticated, (req, res, next) => {
 });
 
 // --------> 2.2) GET / Classic Movie
-router.get('/movie-suggestion/classic', ensureAuthenticated, (req, res, next) => {
+router.get('/movie-suggestion/classic', ensureLoggedIn, (req, res, next) => {
     let baseUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=';
     let baseImgUrl = 'https://image.tmdb.org/t/p/w342/';
     const apiKey = process.env.MOVIEDB_API_KEY;

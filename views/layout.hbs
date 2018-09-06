@@ -26,18 +26,21 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="/auth/login">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="/auth/signup">Signup</a>
-        </li>
+        {{#if isConnected}}
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="/auth/logout">Logout</a>
         </li>
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="/user-profile">Profile</a>
         </li>
+        {{else}}
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="/auth/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="/auth/signup">Signup</a>
+        </li>
+        {{/if}}
         <li class="nav-item">
         </li>
       </ul>

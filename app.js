@@ -78,6 +78,15 @@ app.use(
 app.use(flash());
 require('./passport')(app);
 
+app.use((req, res, next) => {
+    console.log('I was triggered');
+    res.locals.isConnected = req.isAuthenticated();
+    res.locals.currentUser = req.user;
+    // res.locals.isAdmin = req.user && req.user.role === ‘ADMIN’
+    // res.locals.isOwner = req.user.username === event._owner.username;
+    next();
+});
+
 // route to homepage
 const index = require('./routes/index');
 app.use('/', index);
