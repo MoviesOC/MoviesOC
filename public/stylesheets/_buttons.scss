@@ -18,6 +18,7 @@
 }
 
 .btn-primary {
+    color: $primary;
     background-color: $grey-100;
     border: 1px solid $primary;
     &:hover {
@@ -31,6 +32,25 @@
         background-color: darken($primary, 15%) !important;
     }
 }
+
+.home .btn.btn-block {
+    margin: 3%;
+    padding: 8%;
+    background-color: $grey-100;
+    border: 1px solid $primary;
+    &:hover {
+        background-color: $primary;
+        color: white;
+    }
+    &:focus {
+        background-color: $primary;
+        color: white;
+    }
+    &:active {
+        background-color: $primary !important;
+    }
+}
+
 #search {
     box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
     padding: 0.7rem 1rem;

@@ -39,8 +39,6 @@ a {
     font-weight: 500;
     &:focus,
     &:hover {
-        transition: all 0.2s ease-in-out;
-        transform: scale(1.1);
         font-weight: 600;
         text-decoration: none;
         color: $navbar;
@@ -78,6 +76,7 @@ a {
     margin-top: 3%;
 }
 #mov-sugg-div {
+    padding: 1%;
     margin-top: 3%;
     background-color: aquamarine;
     width: 80%;
@@ -99,4 +98,10 @@ a {
 
 #all-cards {
     margin: 0.5rem;
+}
+
+.home {
+    .btn.btn-block {
+        color: black;
+    }
 }

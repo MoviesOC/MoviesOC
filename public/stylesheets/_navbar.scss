@@ -4,8 +4,9 @@
 
 #mainNav {
     height: 70px;
-    background-color: rgba($color: $navbar, $alpha: 0.8);
-    color: $grey-700;
+    // background-color: rgba($color: $navbar, $alpha: 0.8);
+    background-color: $primary;
+    color: $white;
     text-align: center;
     .navbar-toggler {
         font-size: 90%;
@@ -25,6 +26,8 @@
     .navbar-nav {
         .nav-item {
             &:hover {
+                transition: all 0.2s ease-in-out;
+                transform: scale(1.1);
                 color: fade($white, 80%);
                 outline: none;
                 background-color: transparent;
@@ -45,7 +48,8 @@
         padding-top: 0;
         padding-bottom: 0;
         border-bottom: none;
-        background-color: rgba($color: $navbar, $alpha: 0.8);
+        // background-color: rgba($color: $navbar, $alpha: 0.8);
+        background-color: $primary;
         transition: background-color 0.3s ease-in-out;
         .navbar-brand {
             padding: 0.5rem 0;
