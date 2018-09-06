@@ -4,7 +4,7 @@
       <img class="img-fluid" src="{{image}}" id="picture">
     </div>
     <div class="col-md-6 mb-3 mb-md-0">
-      <div class="card py-4 h-100">
+      <div class="card py-2 h-100">
         <div class="card-body">
           <div class="row">
             <div class="col-6 my-1">
@@ -38,12 +38,15 @@
               <a class="btn btn-primary btn-block" href="">Try again</a>
             </div>
           </div>
-          <h4 class="text-uppercase m-2">{{title}}</h4>
-          <h5>{{releaseYear}}</h5>
-          <h5>Average Voting: {{rating}}</h5>
-          <p class="mb-0">{{plot}}</p>
-          {{!--
-          <hr class="my-4"> --}}
+          <div class="movie-description">
+            <h4 class="text-uppercase">{{title}}</h4>
+
+            <h5>{{releaseYear}}</h5>
+            </h5>Average Voting: {{rating}}
+            </h5>
+
+            <p class="mb-0">{{plot}}</p>
+          </div>
         </div>
       </div>
     </div>

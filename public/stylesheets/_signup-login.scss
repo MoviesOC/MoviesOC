@@ -1,18 +1,23 @@
 /*
 2.2) Login and Signup style
 */
-
+.signup h5 {
+    text-align: center;
+}
 .form-container {
     margin: 30px auto;
     width: 380px;
 }
 #form-container {
-    margin: 30px auto;
-    width: 380px;
+    margin: 7% auto;
+    width: 40%;
+    background-color: aquamarine;
+    padding: 4%;
+    border-radius: 3%;
 }
 
 #form-container label {
-    color: #666;
+    color: $grey-800;
     display: inline-block;
     margin-bottom: 10px;
     text-align: center;
@@ -21,7 +26,8 @@
 
 #form-container input,
 #form-container button {
-    box-sizing: border-box;
+    // box-sizing: border-box;
+    border-radius: 2px;
     font-size: 14px;
     outline: 0;
     padding: 4px;
@@ -29,10 +35,10 @@
 }
 
 #form-container button {
-    background: #43a3e6;
-    border: 1px solid #43a3e6;
+    background: $white;
+    border: 1px solid $primary;
+    color: $primary;
     border-radius: 4px;
-    color: $white;
     cursor: pointer;
     display: inline-block;
     font-size: 14px;
@@ -59,13 +65,13 @@
 }
 
 #form-container button:hover {
-    background: $white;
-    color: #43a3e6;
+    background: $primary;
+    color: $white;
     transition: 0.3s ease background;
 }
 
 .error-message {
-    background: #f02b63;
+    background: #ff86a8;
     box-sizing: border-box;
     color: $white;
     margin: 20px auto;
