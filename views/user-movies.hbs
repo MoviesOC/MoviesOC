@@ -1,11 +1,22 @@
 <h1>Movies I {{category}}</h1>
-<div class="row">
-    {{#each movies}}
-    <div class="col-md-3">
-        {{> movieCard this}}
-    </div>
-    {{/each}}
+</pre>
+{{#each movieInfo}}
+<div class="cards-container">
+    {{> movieCard this}}
 </div>
+{{/each}}
+
+{{#each movieInfo}}
+<div class="videos-container">
+    {{> trailerModal this}}
+</div>
+{{/each}}
+
+{{#each movieInfo}}
+<div class="details-container">
+    {{> detailsModal this}}
+</div>
+{{/each}}
 
 {{!--
 <div class="scrollbar scrollbar-lady-lips">
