@@ -4,7 +4,7 @@
 @import 'movie-detail.scss';
 @import 'signup-login.scss';
 @import 'movieCard.scss';
-
+// @import url('//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css');
 /*
 // 0.) GENERAL SETUP
 */
@@ -13,6 +13,15 @@
 }
 
 body {
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: url(/images/photo-1510130315046-1e47cc196aa0.jpeg);
+    // background-image: url(/public/images/photo-1510419580815-f9e6b26cf0f2.jpeg);
+    // background-image: url(/public/images/photo-1512149177596-f817c7ef5d4c.jpeg);
+    // background-image: url(/public/images/photo-1513106580091-1d82408b8cd6.jpeg);
+    // background-image: url(/public/images/photo-1526001358666-a4515b9b0ce3.jpeg);
+    // background-image: url(/public/images/photo-1526007413281-c202e21eedf3.jpeg);
     font-family: 'Nunito';
     letter-spacing: 0.0625em;
     background-color: $grey-100;
@@ -45,10 +54,10 @@ a {
 // }
 
 // headings
-h1,
-h2,
-h3 {
-    margin: 30px auto;
-    text-align: center;
-    width: 380px;
-}
+// h1,
+// h2,
+// h3 {
+//     margin: 30px auto;
+//     text-align: center;
+//     width: 380px;
+// }

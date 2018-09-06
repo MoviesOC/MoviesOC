@@ -2,11 +2,10 @@
 // Navbar
 */
 #mainNav {
-  position: fixed;
-  left: 0;
-  top: 0;
   height: 60px;
-  background-color: #f8f9fa; }
+  background-color: rgba(81, 86, 90, 0.8);
+  color: #51565a;
+  text-align: center; }
   #mainNav .navbar-toggler {
     font-size: 90%;
     padding: 0.75rem;
@@ -33,7 +32,7 @@
       padding-top: 0;
       padding-bottom: 0;
       border-bottom: none;
-      background-color: #a5b7c9;
+      background-color: rgba(14, 96, 151, 0.6);
       transition: background-color 0.3s ease-in-out; }
       #mainNav .navbar-brand {
         padding: 0.5rem 0;
@@ -73,7 +72,8 @@
   border: 0; }
 
 .btn-primary {
-  background-color: #64a19d; }
+  background-color: #f8f9fa;
+  border: 1px solid #64a19d; }
   .btn-primary:hover {
     background-color: #4f837f; }
   .btn-primary:focus {
@@ -82,12 +82,30 @@
   .btn-primary:active {
     background-color: #467370 !important; }
 
+#search {
+  box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
+  padding: 0.7rem 1rem;
+  font-family: 'Varela Round';
+  font-size: 80%;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+  background-color: #f8f9fa;
+  border: 1px solid #64a19d;
+  border-radius: 4px; }
+  #search:hover {
+    background-color: #c1c9d0; }
+  #search:focus {
+    background-color: #4f837f;
+    color: white; }
+  #search:active {
+    background-color: #467370 !important; }
+
 /*
 // Movie Detail page
 */
 #projects {
   margin-top: 10%;
-  background-color: #f8f9fa;
+  background-color: rgba(248, 249, 250, 0.5);
   padding: 10rem 0; }
   #projects .featured-text {
     padding: 2rem; }
@@ -184,6 +202,9 @@
 card-block {
   padding: 1.5rem; }
 
+.card {
+  background-color: rgba(255, 255, 255, 0.5); }
+
 /*
 // 0.) GENERAL SETUP
 */
@@ -191,6 +212,10 @@ card-block {
   margin: 0; }
 
 body {
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: url(/images/photo-1510130315046-1e47cc196aa0.jpeg);
   font-family: 'Nunito';
   letter-spacing: 0.0625em;
   background-color: #f8f9fa; }
@@ -201,12 +226,5 @@ a {
   a:focus, a:hover {
     text-decoration: none;
     color: #3c6360; }
-
-h1,
-h2,
-h3 {
-  margin: 30px auto;
-  text-align: center;
-  width: 380px; }
 
 /*# sourceMappingURL=style.css.map */
