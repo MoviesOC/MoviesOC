@@ -201,11 +201,14 @@ function ensureAuthenticated(req, res, next) {
 
 router.get('/user-profile', ensureAuthenticated, (req, res) => {
     Movie.find({ _owner: req.user }).then(movies => {
-        if ((movies.category = 'like')) {
-            let movies;
-        }
-        console.log('============================================', movies);
-        res.render('user-profile', { user: req.user, moviesNumber: movies.length });
+        console.log(movies[movies.length - 3]);
+        res.render('user-profile', {
+            user: req.user,
+            moviesNumber: movies.length,
+            lastLiked1: movies[movies.length - 1],
+            lastLiked2: movies[movies.length - 2],
+            lastLiked3: movies[movies.length - 3]
+        });
     });
 });
 
@@ -362,7 +365,7 @@ router.get('/find-movies', (req, res, next) => {
     let searchUrl = ''.concat(baseUrl + 'api_key=' + apiKey + language + query + searchQuery + page);
     axios.get(searchUrl).then(result => {
         console.log(result.data.results);
-        res.render('search-result', { result: result.data.results });
+        res.render('search-result', { result: result.data.results, searchQuery });
     });
 });
 

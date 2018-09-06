@@ -1,9 +1,11 @@
-<h1>Movies I {{word}}</h1>
+<div id="title">
+    <h1>Movies I {{word}}</h1>
+</div>
 
 <div id="all-cards">
-    <div class="row">
+    <div class="row cardContainer">
         {{#each movieInfo}}
-        <div class="col-md-3">
+        <div class="col-md-4">
             {{> movieCard this}}
         </div>
         {{/each}}

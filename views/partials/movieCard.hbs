@@ -1,19 +1,21 @@
 <div class="card" style="width: 18rem;">
     <img class="card-img top" src="{{picture}}" alt="{{title}} picture">
-    <div class="card-body">
+    <div class="">
         <h5 class="card-title">{{title}} <br>{{release_date}}</h5>
     </div>
     <div class="card-body">
-        <button type="button" data-toggle="modal" data-target="#myDetailsModal-{{tmdbId}}">Details</button>
-        <button type="button" data-toggle="modal" data-target="#myTrailerModal-{{tmdbId}}">Watch Trailer</button>
+        <a type="button" data-toggle="modal" data-target="#myDetailsModal-{{tmdbId}}">Details</a>
+        {{#if youtubeLink}}
+        <a type="button" data-toggle="modal" data-target="#myTrailerModal-{{tmdbId}}">Watch Trailer</a>
+        {{/if}}
         <a onclick="window.location='/movie/{{id}}/delete'">Delete</a>
+        <form action="/movies/{{id}}/edit" method="get">
+            <select name="category">
+                <option value="like">Like List</option>
+                <option value="hate">Hate List</option>
+                <option value="watched">Watched List</option>
+            </select>
+            <button type="submit">Change</button>
+        </form>
     </div>
-    <form action="/movies/{{id}}/edit" method="get">
-        <select name="category">
-            <option value="like">Like List</option>
-            <option value="hate">Hate List</option>
-            <option value="watched">Watched List</option>
-        </select>
-        <button type="submit" class="btn btn-primay">Change</button>
-    </form>
 </div>
