@@ -211,7 +211,7 @@ router.get('/user-movies/:category', (req, res, next) => {
             if (movie.category === movieCategory) {
                 moviesArray.push(movie);
             } else {
-                console.log('error');
+                console.log('doesnt belong in list');
             }
         });
         let word = '';

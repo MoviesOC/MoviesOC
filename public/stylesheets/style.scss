@@ -4,6 +4,7 @@
 @import 'movie-detail.scss';
 @import 'signup-login.scss';
 @import 'movieCard.scss';
+@import 'categoryCard.scss';
 // @import url('//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css');
 /*
 // 0.) GENERAL SETUP
@@ -16,7 +17,11 @@ body {
     background-size: 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-image: url(/images/photo-1510130315046-1e47cc196aa0.jpeg);
+
+    //used before:
+    // background-image: url(/images/photo-1510130315046-1e47cc196aa0.jpeg);
+    //
+    // background-image: url(/public/images/photo-1504309092620-4d0ec726efa4.jpeg);
     // background-image: url(/public/images/photo-1510419580815-f9e6b26cf0f2.jpeg);
     // background-image: url(/public/images/photo-1512149177596-f817c7ef5d4c.jpeg);
     // background-image: url(/public/images/photo-1513106580091-1d82408b8cd6.jpeg);
@@ -28,12 +33,16 @@ body {
 }
 
 a {
-    color: $primary;
+    color: $grey-800;
     text-decoration: none;
+    font-weight: 500;
     &:focus,
     &:hover {
+        transition: all 0.2s ease-in-out;
+        transform: scale(1.1);
+        font-weight: 600;
         text-decoration: none;
-        color: darken($primary, 20%);
+        color: $navbar;
     }
 }
 
@@ -61,3 +70,28 @@ a {
 //     text-align: center;
 //     width: 380px;
 // }
+
+#title {
+    text-align: center;
+    margin-bottom: 3%;
+    margin-top: 3%;
+}
+#mov-sugg-div {
+    margin-top: 3%;
+    background-color: aquamarine;
+    width: 80%;
+}
+#picture img {
+    max-width: 100%;
+}
+#titlePage {
+    text-align: center;
+    padding-top: 2%;
+}
+#titleMovie {
+    text-align: center;
+    padding-top: 2%;
+}
+#testtest {
+    background-color: black;
+}
