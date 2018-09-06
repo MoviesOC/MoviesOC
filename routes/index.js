@@ -200,7 +200,13 @@ function ensureAuthenticated(req, res, next) {
 */
 
 router.get('/user-profile', ensureAuthenticated, (req, res) => {
-    res.render('user-profile', { user: req.user });
+    Movie.find({ _owner: req.user }).then(movies => {
+        if ((movies.category = 'like')) {
+            let movies;
+        }
+        console.log('============================================', movies);
+        res.render('user-profile', { user: req.user, moviesNumber: movies.length });
+    });
 });
 
 /*
@@ -214,7 +220,6 @@ router.get('/user-movies/:category', (req, res, next) => {
         let baseUrl = 'https://api.themoviedb.org/3/movie/';
         const apiKey = process.env.MOVIEDB_API_KEY;
         let language = '&language=en-US';
-
         Promise.all(
             movies.map(movie => {
                 return axios.get(
@@ -235,6 +240,7 @@ router.get('/user-movies/:category', (req, res, next) => {
                 if (youtubeKey) {
                     var youtubeLink = 'https://www.youtube.com/embed/' + youtubeKey + '?autoplay=0';
                 }
+
                 return {
                     title: response.data.title,
                     genres: response.data.genres,
@@ -245,10 +251,10 @@ router.get('/user-movies/:category', (req, res, next) => {
                     tagline: response.data.tagline,
                     rating: response.data.vote_average,
                     youtubeLink: youtubeLink,
-                    id: movies[i]._id
+                    id: movies[i]._id,
+                    category: req.params.category
                 };
             });
-            console.log(moviesInfo);
             let word = '';
             switch (movieCategory) {
                 case 'like':
@@ -274,7 +280,6 @@ router.get('/movie/:id/delete', (req, res, next) => {
     console.log('going to delete');
     Movie.findByIdAndRemove(req.params.id)
         .then(movie => {
-            console.log('The movie was deleted!!!:' + movie);
             res.redirect('/user-movies/' + movie.category);
         })
         .catch(error => {
