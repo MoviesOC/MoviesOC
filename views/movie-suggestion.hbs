@@ -11,7 +11,8 @@
               <form action="/movie-suggestion/like" method="POST">
                 <input type="hidden" name="tmdbId" value="{{id}}"> {{!-- TO MODIFY when we have the data --}}
                 <input type="hidden" name="title" value="{{title}}">
-                <input type="hidden" name="picture" value="{{image}}"> {{!-- <input type="hidden" name="category" value="like">                --}}
+                <input type="hidden" name="picture" value="{{image}}"> {{!-- <input type="hidden" name="category" value="like">
+                --}}
                 <input type="hidden" name="genre" value="{{genre}}">
                 <button class="btn btn-primary btn-block">Like it</button>
               </form>
@@ -20,7 +21,8 @@
               <form action="/movie-suggestion/hate" method="POST">
                 <input type="hidden" name="tmdbId" value="{{id}}"> {{!-- TO MODIFY when we have the data --}}
                 <input type="hidden" name="title" value="{{title}}">
-                <input type="hidden" name="picture" value="{{image}}"> {{!-- <input type="hidden" name="category" value="like">                --}}
+                <input type="hidden" name="picture" value="{{image}}"> {{!-- <input type="hidden" name="category" value="like">
+                --}}
                 <input type="hidden" name="genre" value="{{genre}}">
                 <button class="btn btn-primary btn-block">Hate it</button>
               </form>
@@ -29,7 +31,8 @@
               <form action="/movie-suggestion/watched" method="POST">
                 <input type="hidden" name="tmdbId" value="{{id}}"> {{!-- TO MODIFY when we have the data --}}
                 <input type="hidden" name="title" value="{{title}}">
-                <input type="hidden" name="picture" value="{{image}}"> {{!-- <input type="hidden" name="category" value="like">                --}}
+                <input type="hidden" name="picture" value="{{image}}"> {{!-- <input type="hidden" name="category" value="like">
+                --}}
                 <input type="hidden" name="genre" value="{{genre}}">
                 <button class="btn btn-primary btn-block">Already seen!</button>
               </form>
@@ -40,10 +43,13 @@
           </div>
           <div class="movie-description">
             <h4 class="text-uppercase">{{title}}</h4>
-            <div class="year-rating">
-              <h5>{{releaseYear}}</h5>
-              </h5>Average Voting: {{rating}}
-              </h5>
+            <div class="year-rating row">
+              <div>
+                <h5>{{releaseYear}}</h5>
+              </div>
+              <div>
+                <h5>Rating: {{rating}}</h5>
+              </div>
             </div>
             <p class="mb-0">{{plot}}</p>
           </div>
