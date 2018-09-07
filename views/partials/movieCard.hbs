@@ -1,21 +1,26 @@
-<div class="card" style="width: 18rem;">
+<div class="cardSearch cardList" style="width: 18rem;">
     <img class="card-img top" src="{{picture}}" alt="{{title}} picture">
     <div class="">
         <h5 class="card-title">{{title}} <br>{{release_date}}</h5>
     </div>
-    <div class="card-body">
-        <a type="button" data-toggle="modal" data-target="#myDetailsModal-{{tmdbId}}">Details</a>
+    <div class="card-body-list">
+
+        <a class="btn-card btn-card-action" role="button" data-toggle="modal" data-target="#myDetailsModal-{{tmdbId}}">Details</a><br>
         {{#if youtubeLink}}
-        <a type="button" data-toggle="modal" data-target="#myTrailerModal-{{tmdbId}}">Watch Trailer</a>
+        <a class="btn-card btn-card-action" role="button" data-toggle="modal" data-target="#myTrailerModal-{{tmdbId}}">Watch
+            Trailer</a><br>
         {{/if}}
-        <a onclick="window.location='/movie/{{id}}/delete'">Delete</a>
+        <a onclick="window.location='/movie/{{id}}/delete'" class="btn-card btn-card-action" role="button">Delete</a><br>
+
+
         <form action="/movies/{{id}}/edit" method="get">
-            <select name="category">
+            <select name="category" class="btn-card btn-card-edit">
                 <option value="like">Like List</option>
                 <option value="hate">Hate List</option>
                 <option value="watched">Watched List</option>
             </select>
-            <button type="submit">Change</button>
+            <button type="submit" class="btn-card btn-card-edit">Change</button>
         </form>
+
     </div>
 </div>
