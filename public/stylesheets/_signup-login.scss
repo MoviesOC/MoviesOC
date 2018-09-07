@@ -11,7 +11,8 @@
 #form-container {
     margin: 7% auto;
     width: 40%;
-    background-color: aquamarine;
+    border: aquamarine 5px solid;
+    border-radius: 4px;
     padding: 4%;
     border-radius: 3%;
 }
@@ -24,17 +25,18 @@
     width: 100%;
 }
 
-#form-container input,
-#form-container button {
-    // box-sizing: border-box;
-    border-radius: 2px;
-    font-size: 14px;
-    outline: 0;
-    padding: 4px;
-    width: 100%;
-}
+// #form-container input,
+// #form-container button {
+//     // box-sizing: border-box;
+//     border-radius: 2px;
+//     font-size: 14px;
+//     outline: 0;
+//     padding: 4px;
+//     width: 100%;
+// }
 
-#form-container button {
+#form-container button,
+#form-container input {
     background: $white;
     border: 1px solid $primary;
     color: $primary;
