@@ -239,6 +239,9 @@ card-block {
   width: 100%;
   height: 10%; }
 
+#user-welcome h5 {
+  text-emphasis: none; }
+
 #profile-img {
   width: 60%;
   border-radius: 50%; }
@@ -261,6 +264,19 @@ card-block {
 
 h2 {
   text-align: center; }
+
+#button-like {
+  color: #164ce0;
+  background-color: #f8f9fa;
+  border: 1px solid #164ce0; }
+  #button-like:hover {
+    background-color: #164ce0;
+    color: white; }
+  #button-like:focus {
+    background-color: #164ce0;
+    color: white; }
+  #button-like:active {
+    background-color: #164ce0 !important; }
 
 .card img {
   max-width: 50%;
