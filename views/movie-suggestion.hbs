@@ -1,18 +1,17 @@
 <div class="container" id="mov-sugg-div">
   <div class="row">
-    <div class="col-md-6 mb-3 mb-md-0 text-center">
+    <div class="col-4 mb-3 mb-md-0 text-center">
       <img class="img-fluid" src="{{image}}" id="picture">
     </div>
-    <div class="col-md-6 mb-3 mb-md-0">
-      <div class="card py-2 h-100">
+    <div class="col-8 mb-3 mb-md-0">
+      <div class=" py-2 h-100">
         <div class="card-body">
           <div class="row">
             <div class="col-6 my-1">
               <form action="/movie-suggestion/like" method="POST">
                 <input type="hidden" name="tmdbId" value="{{id}}"> {{!-- TO MODIFY when we have the data --}}
                 <input type="hidden" name="title" value="{{title}}">
-                <input type="hidden" name="picture" value="{{image}}"> {{!-- <input type="hidden" name="category" value="like">
-                --}}
+                <input type="hidden" name="picture" value="{{image}}"> {{!-- <input type="hidden" name="category" value="like">                --}}
                 <input type="hidden" name="genre" value="{{genre}}">
                 <button class="btn btn-primary btn-block">Like it</button>
               </form>
@@ -21,8 +20,7 @@
               <form action="/movie-suggestion/hate" method="POST">
                 <input type="hidden" name="tmdbId" value="{{id}}"> {{!-- TO MODIFY when we have the data --}}
                 <input type="hidden" name="title" value="{{title}}">
-                <input type="hidden" name="picture" value="{{image}}"> {{!-- <input type="hidden" name="category" value="like">
-                --}}
+                <input type="hidden" name="picture" value="{{image}}"> {{!-- <input type="hidden" name="category" value="like">                --}}
                 <input type="hidden" name="genre" value="{{genre}}">
                 <button class="btn btn-primary btn-block">Hate it</button>
               </form>
@@ -31,8 +29,7 @@
               <form action="/movie-suggestion/watched" method="POST">
                 <input type="hidden" name="tmdbId" value="{{id}}"> {{!-- TO MODIFY when we have the data --}}
                 <input type="hidden" name="title" value="{{title}}">
-                <input type="hidden" name="picture" value="{{image}}"> {{!-- <input type="hidden" name="category" value="like">
-                --}}
+                <input type="hidden" name="picture" value="{{image}}"> {{!-- <input type="hidden" name="category" value="like">                --}}
                 <input type="hidden" name="genre" value="{{genre}}">
                 <button class="btn btn-primary btn-block">Already seen!</button>
               </form>
@@ -42,15 +39,14 @@
             </div>
           </div>
           <div class="movie-description">
-            <h4 class="text-uppercase">{{title}}</h4>
-            <div class="year-rating row">
-              <div>
-                <h5>{{releaseYear}}</h5>
-              </div>
-              <div>
-                <h5>Rating: {{rating}}</h5>
-              </div>
+            <h4 class="text-uppercase" id="title">{{title}}</h4>
+            <hr>
+            <div class="year-rating">
+              <h5>{{releaseYear}}</h5>
+              </h5>Average Voting: {{rating}}
+              </h5>
             </div>
+            <hr style="height:2px;border:none;color:aquamarine;background-color:aquamarine;" />
             <p class="mb-0">{{plot}}</p>
           </div>
         </div>

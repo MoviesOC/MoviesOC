@@ -62,4 +62,7 @@
     &:active {
         background-color: darken($grey-100, 15%) !important;
     }
+    #search input {
+        border: 2px solid aquamarine;
+    }
 }
