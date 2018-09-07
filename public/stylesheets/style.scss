@@ -103,6 +103,19 @@ a {
     flex-direction: row;
     justify-content: space-evenly;
 }
+
+.lists hr {
+    hr {
+        align-content: center;
+        border-color: aquamarine;
+        border-width: 0.1rem;
+        border: none;
+        height: 0.5px;
+        width: 150%;
+        margin: 2% auto;
+    }
+}
+
 #picture img {
     width: 100%;
 }
