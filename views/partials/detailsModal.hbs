@@ -14,9 +14,9 @@
                             {{#each genres}}
                             <p>{{name}}</p>
                             {{/each}}
-                            <button class="btn btn-primary btn-block" onclick="window.location='/movie/{{id}}/delete'">Delete</button>
-                            <button class="btn btn-primary btn-block" onclick="window.open('https://www.themoviedb.org/movie/{{tmdbId}}' , '_blank')">Look
-                                for details on the website</button>
+                            <button class="btn btn-primary btn-block btn-modal" onclick="window.location='/movie/{{id}}/delete'">Delete</button>
+                            <button class="btn btn-primary btn-block btn-modal" onclick="window.open('https://www.themoviedb.org/movie/{{tmdbId}}' , '_blank')">Look
+                                for details<br> on the TheMovieDB</button>
                         </div>
                     </div>
                 </div>

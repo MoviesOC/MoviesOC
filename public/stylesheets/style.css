@@ -237,6 +237,11 @@ card-block {
 #categories {
   margin-top: 2%; }
 
+#user-profile-div {
+  border: 7px solid aquamarine;
+  border-radius: 10px;
+  padding: 0% 5%; }
+
 #header-img {
   width: 100%;
   height: 10%; }
@@ -245,21 +250,32 @@ card-block {
   text-emphasis: none; }
 
 #profile-img {
-  width: 60%;
-  border-radius: 50%; }
+  width: 40%;
+  border-radius: 50%;
+  margin-left: 30%;
+  margin-bottom: 10%; }
+
+#about-section {
+  height: 65%;
+  margin: 2%;
+  padding: 3%;
+  border: 4px solid aquamarine;
+  border-radius: 4px; }
 
 .likedParent {
   display: flex;
   justify-content: space-evenly; }
 
 .liked {
+  padding: 2%;
   object-fit: cover;
-  border: green 3px solid;
+  border: aquamarine 2px solid;
+  border-radius: 3px;
   cursor: pointer;
-  height: 190px; }
+  height: 20%; }
 
 .liked img {
-  max-width: 75%; }
+  max-width: 100%; }
 
 .liked p {
   font-size: 15px; }
@@ -268,6 +284,7 @@ h2 {
   text-align: center; }
 
 #button-like {
+  margin: 0;
   color: #164ce0;
   background-color: #f8f9fa;
   border: 1px solid #164ce0; }
@@ -280,6 +297,9 @@ h2 {
   #button-like:active {
     background-color: #164ce0 !important; }
 
+#profile-pic {
+  align-content: center; }
+
 .cardSearch img {
   max-width: 50%;
   margin-right: auto;
@@ -291,7 +311,7 @@ h2 {
   border: 1px solid rgba(0, 0, 0, 0.125); }
 
 .cardList {
-  height: 500px; }
+  height: 550px; }
 
 .cardSearch {
   /* Added */
@@ -322,18 +342,47 @@ h2 {
   letter-spacing: 0.15rem;
   border-radius: 4px;
   padding: 5px; }
-  .btn-card:hover {
-    background-color: #113cb2; }
   .btn-card:focus {
     background-color: #113cb2;
-    color: white; }
+    color: aquamarine; }
   .btn-card:active {
-    background-color: #0f349a !important; }
+    background-color: #0f349a !important;
+    color: aquamarine; }
+  .btn-card:hover {
+    color: aquamarine;
+    background-color: #113cb2; }
 
 .btn-card-action {
   width: 200px;
   justify-content: center;
   margin-left: 20px; }
+
+.btn-card-action:hover {
+  background-color: #113cb2;
+  color: aquamarine !important; }
+
+.modal {
+  max-width: 100%;
+  width: 900px;
+  margin-left: 200px; }
+
+.modal-content {
+  border: 5px aquamarine solid; }
+
+.modal-trailer {
+  width: 800px;
+  max-width: 100%;
+  border: 5px aquamarine solid;
+  border-radius: 2%; }
+
+.btn-modal {
+  width: 300px;
+  margin-left: 30px;
+  margin-top: 50px; }
+
+.modal-body-trailer {
+  margin-left: 100px;
+  margin-top: 50px; }
 
 /*
 // 0.) GENERAL SETUP
@@ -369,6 +418,9 @@ a {
     width: 22rem;
     margin: 2% auto; }
 
+.border {
+  height: 20%; }
+
 .movie-description hr {
   align-content: center;
   border-color: aquamarine;
@@ -393,12 +445,15 @@ a {
   margin-bottom: 4%; }
 
 .year-rating {
-  display: inline-block;
-  justify-content: baseline; }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly; }
   .year-rating hr {
     align-content: center;
     border-color: aquamarine;
     border-width: 0.1rem;
+    border: none;
+    height: 0.5px;
     width: 100%;
     margin: 2% auto; }
 

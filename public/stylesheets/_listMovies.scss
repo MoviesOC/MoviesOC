@@ -11,7 +11,7 @@
 }
 
 .cardList {
-    height: 500px;
+    height: 550px;
 }
 
 .cardSearch {
@@ -44,15 +44,17 @@
     letter-spacing: 0.15rem;
     border-radius: 4px;
     padding: 5px;
-    &:hover {
-        background-color: darken($primary, 10%);
-    }
     &:focus {
         background-color: darken($primary, 10%);
-        color: white;
+        color: aquamarine;
     }
     &:active {
         background-color: darken($primary, 15%) !important;
+        color: aquamarine;
+    }
+    &:hover {
+        color: aquamarine;
+        background-color: darken($primary, 10%);
     }
 }
 
@@ -60,4 +62,8 @@
     width: 200px;
     justify-content: center;
     margin-left: 20px;
+}
+.btn-card-action:hover {
+    background-color: darken($primary, 10%);
+    color: aquamarine !important;
 }
