@@ -1,16 +1,24 @@
-.card img {
+.cardSearch img {
     max-width: 50%;
     margin-right: auto;
     margin-left: auto;
     margin-top: 20px;
 }
 
-.card {
+.cardSearch {
+    height: 450px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.cardList {
+    height: 500px;
+}
+
+.cardSearch {
     /* Added */
     float: none; /* Added */
     margin-bottom: 30px; /* Added */
-    height: 450px;
-    // text-align: center;
+    text-align: center;
     align-content: center;
     margin-right: 20px;
 }
@@ -21,9 +29,35 @@
     margin-right: 30px;
 }
 
-.card-body {
+.card-body-list {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
 }
-.card-body a form button {
-    border: red solid 3px;
+
+.btn-card {
+    border: $primary 1px solid;
+    box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
+    font-family: 'Varela Round';
+    font-size: 80%;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    border-radius: 4px;
+    padding: 5px;
+    &:hover {
+        background-color: darken($primary, 10%);
+    }
+    &:focus {
+        background-color: darken($primary, 10%);
+        color: white;
+    }
+    &:active {
+        background-color: darken($primary, 15%) !important;
+    }
+}
+
+.btn-card-action {
+    width: 200px;
+    justify-content: center;
+    margin-left: 20px;
 }
