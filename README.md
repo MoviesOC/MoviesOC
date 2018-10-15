@@ -62,4 +62,4 @@ MOVIEDB_API_KEY= // -> Here your MovieDB API key
 MONGODB_URI=mongodb://localhost/movies-oc
 ```
 
-In order to have access to the MovieDB you will need to create an account at the Movie Database [here](https://www.themoviedb.org/account/signup) and paste it in the .env file.
+In order to have access to the MovieDB you will need to create an account at the Movie Database [here](https://www.themoviedb.org/account/signup) and paste it in the `.env` file.
