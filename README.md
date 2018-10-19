@@ -8,11 +8,11 @@ Have an easy-to-use website that brings fun to the people who look for movies.
 
 A User chooses one of the categories on the homepage and gets a randomized movie depending on the genre. Before using the functions of the website, the user has to sign up and log in.
 
-When looking at the movie recommendation a user can choose from four options. They can either decide the movie recommendation sounds good and they like it, the movie recommendation sucks, they have already watched the movie or they don't care about the recommendation and want a whole new movie without interacting.
+When looking at the movie recommendation a user can choose from four options. They can either decide the movie recommendation sounds good and they like it, the movie recommendation is bad, they have already watched the movie or they don't care about the recommendation and want a whole new movie.
 
-After choosing one of the first three options, the movie will be added to the user profile, where it can be examined in more detail, as well as moved from list to list, delete the movie from the whole profile or watch the trailer.
+After choosing one of the first three options, the movie will be added to the user profile, where it can be examined in more detail, as well as moved from list to list or deleted from the profile. Also there is an option to watch the trailer if it exists.
 
-A search option is also available.
+A search option is also available in the Navbar.
 
 You can try a demo on [Heroku](https://movies-oc.herokuapp.com)
 
